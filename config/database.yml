@@ -20,6 +20,8 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
+  username: workful
+  password: workful
 
 development:
   <<: *default
@@ -82,4 +84,4 @@ production:
   <<: *default
   database: workful_production
   username: workful
-  password: <%= ENV['WORKFUL_DATABASE_PASSWORD'] %>
+  password: workful

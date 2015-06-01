@@ -6,9 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<body class="<%= body_class %>">
+  <% if current_user %>
+    <%= render 'shared/navbar' %>
+  <% end %>
+  <% if notice.present? || alert.present? %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  <% end %>
 <%= yield %>
 
 </body>

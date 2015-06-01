@@ -1,10 +1,36 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :invites, only: [:new, :index, :create, :destroy] do
+    collection do
+      get 'activation/:invite_code', to: 'invites#activation', as: :activation
+      post 'create_account'
+    end
+  end
+  resources :companies, only: [:update] do
+    collection do
+      get 'configure'
+    end
+  end
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  get 'pages/index'
+  get 'pages/dashboard'
+
+  devise_for :users, path: 'account',
+  path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' },
+  controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
+
+  resources :items
+  resources :item_categories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  authenticated do
+    root 'pages#dashboard', as: :authenticated
+  end
+
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'pages#dashboard'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

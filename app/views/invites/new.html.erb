@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 box-white">
+      <h1>Invites</h1>
+      <div class="users-invited">
+        <% if @invites.count > 0 %>
+          <% @invites.each do |invite| %>
+            <div class="col-md-3">
+              <%= invite.first_name %>
+            </div>
+
+            <div class="col-md-3">
+              <%= invite.last_name %>
+            </div>
+
+            <div class="col-md-3">
+              <%= invite.email %>
+            </div>
+
+            <div class="col-md-3">
+              <div class="col-md-6">
+                $ <%= invite.monthly_budget %>
+              </div>
+
+              <div class="col-md-6">
+                Actions
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="text-center no-users">No invites yet, start adding one!</p>
+        <% end %>
+      </div>
+      <h4>Add a new user</h4>
+      <div class="user-invite">
+        <%= form_for @invite, remote: true do |f| %> 
+          <div class="col-md-3 field">
+            <%= f.text_field :first_name, placeholder: 'First Name', class: 'form-control' %>
+          </div>
+          <div class="col-md-3 field">
+            <%= f.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %>
+          </div>
+          <div class="col-md-3 field">
+            <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
+          </div>
+          <div class="col-md-3 field">
+            <div class="col-md-9 field">
+              <div class="row">
+                <div class="col-md-3">
+                  $
+                </div>
+                <div class="col-md-9">
+                  <%= f.text_field :monthly_budget, placeholder: '100', class: 'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <%= f.submit 'Add', class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

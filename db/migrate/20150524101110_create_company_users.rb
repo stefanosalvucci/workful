@@ -3,7 +3,7 @@ class CreateCompanyUsers < ActiveRecord::Migration
     create_table :company_users do |t|
       t.integer :company_id
       t.integer :user_id
-      t.integer :role
+      t.integer :role_in_company
 
       t.timestamps null: false
     end

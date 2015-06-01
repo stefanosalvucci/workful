@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 box-white">
+      <h1>Configure Company</h1>
+      <%= form_for @company, remote: true do |f| %>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :url %>
+          <%= f.text_field :url, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :phone_number %>
+          <%= f.text_field :phone_number, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :email_company %>
+          <%= f.text_field :email_company, class: 'form-control' %>
+        </div>
+        <div class="field actions">
+          <%= f.submit 'Next step', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

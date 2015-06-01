@@ -1,0 +1,6 @@
+<%= binding.pry %>
+<p>Hi <b><%= @invite.first_name %> <%= @invite.last_name %></a></p>
+
+<p>You've been invited to join <%= @invite.company.name %> on Workful</p>
+
+<a href="<%= activation_invites_url(@invite.invite_code) %>">Activate Account</a>

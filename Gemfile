@@ -9,6 +9,9 @@ gem 'pg'
 # workful gems
 gem 'devise'
 gem 'cancancan'
+gem 'activeadmin', github: 'activeadmin'
+gem 'paperclip'
+gem 'delayed_job_active_record'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

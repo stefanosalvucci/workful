@@ -1,1 +1,39 @@
-yoooo
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="categories">
+        <% @categories.each do |category| %>
+          <div class="item-category">
+            <h3><%= category.name %></h3>
+            <% category.items.each do |item| %>
+              <div class="item">
+                <div class="item-image">
+                  <%= image_tag item.image.url(:thumb) %>
+                </div>
+                <div class="item-name">
+                  <%= item.name %>
+                </div>
+                <%= form_tag order_items_path, remote: true do %>
+                  <div class="item-info">
+                      <%= hidden_field_tag :item_id, item.id %>
+                      <%= text_field_tag :amount_credit, '', placeholder: '$ 100', class: 'form-control' %>
+                  </div>
+                  <div class="item-actions">
+                    <button class="btn btn-success full-width-u">Add</button>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1 box-white">
+      <div id="shopping-cart">
+        <%= render 'shared/shopping_cart' %>
+        <%= link_to 'Checkout', create_subscriptions_item_subscriptions_path, class: 'btn btn-success full-width-u' %>
+      </div>
+    </div>
+  </div>
+</div>

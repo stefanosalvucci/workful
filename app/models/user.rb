@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_one :company_user
   has_one :company, through: :company_user
 
+  has_many :order_items
+
   def full_name
     "#{self.first_name} #{self.last_name}"
   end

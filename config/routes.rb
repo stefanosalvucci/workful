@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       get 'activation/:invite_code', to: 'invites#activation', as: :activation
       post 'create_account'
+      post 'wizard_invite_done'
     end
   end
   resources :companies, only: [:update] do
@@ -10,7 +11,12 @@ Rails.application.routes.draw do
       get 'configure'
     end
   end
-
+  resources :order_items, only: [:create, :destroy]
+  resources :item_subscriptions, path: 'subscriptions', only: [:index, :edit, :update, :destroy] do
+    collection do
+      get 'create_subscriptions'
+    end
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'pages/index'

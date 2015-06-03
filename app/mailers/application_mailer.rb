@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
   helper ApplicationHelper
-  default from: 'hello@workful.co'
+  default from: 'workfuldevelopment@gmail.com'
 end

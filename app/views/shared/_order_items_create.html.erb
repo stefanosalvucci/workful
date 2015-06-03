@@ -1,0 +1,4 @@
+<div id="shopping-cart">
+  <%= render 'shared/shopping_cart', total_checkout: @total_checkout %>
+  <%= link_to 'Checkout', create_subscriptions_item_subscriptions_path, class: 'btn btn-success full-width-u' %>
+</div>

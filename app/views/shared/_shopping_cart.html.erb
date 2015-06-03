@@ -1,0 +1,26 @@
+<h1>Your Cart</h1>
+<ul class="order-items">
+  <% current_user.order_items.each do |order_item| %>
+    <li class="order-item">
+      <span class="order-item-name"><%= order_item.item.name %></span>
+      <span class="order-item-price">$ <%= order_item.amount_credit %></span>
+      <span class="order-item-price">
+        <% if order_item.item.amount_save.present? %>
+          <b><%= order_item.item.amount_save %> saved</b>
+        <% end %>
+      </span>
+      <%= form_tag order_item_path(order_item.id), method: :delete, remote: true do %>
+        <%= hidden_field_tag :order_item_id, order_item.id %>
+        <%= submit_tag "Remove", class: 'btn btn-danger' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<div class="checkout">
+  <span class="total-checkout">
+    Total Checkout:
+  </span>
+  <span class="total-checkout-amount">
+    <%= @total_checkout %>
+  </span>
+</div>

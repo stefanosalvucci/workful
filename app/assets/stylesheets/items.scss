@@ -1,0 +1,26 @@
+.item-category {
+  .item {
+    width: 200px;
+    height: 255px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.18);
+    .item-image {
+
+    }
+    .item-name {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .item-info {
+
+    }
+    .item-actions {
+      text-align: center;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+    }
+  }
+}

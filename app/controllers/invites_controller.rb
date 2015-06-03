@@ -31,21 +31,16 @@ class InvitesController < ApplicationController
   end
 
   def create_account
-    binding.pry
     if params[:user][:password] == "" or params[:user][:password].length < 6
       redirect_to activation_invites_path(params[:invite_code]), flash[:error] => "The password is short"
     else
-      binding.pry
       @invite = Invite.where(invite_code: params[:invite_code], joined: false).first
       if @invite.present?
-        binding.pry
         @user = User.new(params_user)
         if @user.save
-          binding.pry
           CompanyUser.create(company_id: @invite.company.id, user_id: @user.id, role_in_company: 'user')
           @invite.update_attribute :joined, true
           sign_in @user
-          binding.pry
           redirect_to authenticated_url
         else
           redirect_to activation_invites_path(params[:invite_code]), flash[:error] => "Something is wrong"
@@ -54,6 +49,12 @@ class InvitesController < ApplicationController
         redirect_to root_url, flash[:error] => "Something is wrong"
       end
     end
+  end
+
+  def wizard_invite_done
+    current_user.company.update_attribute :done_welcome_step, "invites_done"
+    current_user.company.update_attribute :done_welcome, true
+    redirect_to authenticated_url, notice: ""
   end
 
   private

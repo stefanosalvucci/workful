@@ -1,0 +1,17 @@
+<div class="edit-item-subscription">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 box-white">
+        <h1>Edit Subscription</h1>
+        <%= form_for(@item_subscription) do |f| %>
+          <div class="field">
+            <%= f.label :amount_credit %>
+            <%= f.text_field :amount_credit, class: 'form-control' %>
+          </div>
+          <br />
+          <%= f.submit 'Save', class: 'btn btn-success full-width-u' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

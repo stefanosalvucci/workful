@@ -13,6 +13,12 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'paperclip'
 gem 'delayed_job_active_record'
 
+gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "4-2-stable"
+
+gem 'valid_email'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

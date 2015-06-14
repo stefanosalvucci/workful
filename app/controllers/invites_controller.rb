@@ -16,6 +16,7 @@ class InvitesController < ApplicationController
     if @invite.save
       redirect_to new_invite_path, notice: "Invite sent to #{@invite.first_name} #{@invite.last_name} (#{@invite.email})."
     else
+      @invites = current_user.company.invites
       render :new
     end
   end

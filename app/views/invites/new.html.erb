@@ -32,8 +32,8 @@
         <% end %>
       </div>
       <h4>Add a new user</h4>
-      <div class="user-invite">
-        <%= form_for @invite, remote: true do |f| %> 
+      <div class="user-invite row">
+        <%= form_for @invite, remote: true, validate: true do |f| %> 
           <div class="col-md-3 field">
             <%= f.text_field :first_name, placeholder: 'First Name', class: 'form-control' %>
           </div>

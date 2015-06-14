@@ -48,8 +48,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
         CompanyUser.create(company_id: company.id,
                            user_id: resource.id,
                            role_in_company: 'owner')
+        binding.pry
       end
     end
+  end
+
+  def create_customer
+
   end
 
   # You can put the params you want to permit in the empty array.

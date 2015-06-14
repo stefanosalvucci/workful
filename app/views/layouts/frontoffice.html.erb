@@ -8,6 +8,9 @@
 </head>
 <body class="<%= body_class %>">
 <%= yield %>
-
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey('pk_test_p7iFs5JNt7Y5fbDaI6fUTHCd');
+</script>
 </body>
 </html>

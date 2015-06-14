@@ -3,7 +3,7 @@ class CreateOrderItems < ActiveRecord::Migration
     create_table :order_items do |t|
       t.integer :item_id
       t.integer :user_id
-      t.integer :amount_credit
+      t.decimal :amount_credit, :precision => 8, :scale => 2
       t.integer :unit
       t.integer :price_unit
 

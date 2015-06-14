@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require rails.validations
+//= require stripe_form
 //= require_tree .

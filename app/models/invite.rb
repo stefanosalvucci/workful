@@ -1,9 +1,16 @@
+require 'valid_email'
+
 class Invite < ActiveRecord::Base
   belongs_to :company
 
   before_save :generate_code
 
   after_create :send_invite
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+  validates :email, presence: true, email: true
 
   def generate_code
     loop do

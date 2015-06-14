@@ -2,8 +2,8 @@
   <div class="container">
     <div class="box">
       <h2>Sign up</h2>
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+:html => {:class => "payment-form"}
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "payment-form"}) do |f| %>
         <%= devise_error_messages! %>
         <div class="row">
           <div class="col-md-6">
@@ -41,6 +41,42 @@
         <div class="field">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+        </div>
+
+        <span class="payment-errors"></span>
+
+        <div class="form-group">
+          <label for="cardNumber">
+              CARD NUMBER</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number" data-stripe="number" required />
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-7 col-md-7">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="expityMonth">EXPIRY DATE</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 col-lg-6 pl-ziro">
+                  <input type="text" class="form-control" id="expityMonth" placeholder="MM" data-stripe="exp-month" required />
+                </div>
+                <div class="col-xs-6 col-lg-6 pl-ziro">
+                  <input type="text" class="form-control" id="expityYear" placeholder="YY" data-stripe="exp-year" required />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5 col-md-5 pull-right">
+            <div class="form-group">
+              <label for="cvCode">CV CODE</label>
+              <input type="password" class="form-control" id="cvCode" placeholder="CV" data-stripe="cvc" required />
+            </div>
+          </div>
         </div>
 
         <div class="actions">

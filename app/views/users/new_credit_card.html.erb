@@ -1,26 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 box-white">
-      <h1>Configure Company</h1>
-      <%= form_for @company, :html => {:class => "payment-form"} do |f| %>
-        <div class="field">
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :url %>
-          <%= f.text_field :url, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :phone_number %>
-          <%= f.text_field :phone_number, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :email_company %>
-          <%= f.text_field :email_company, class: 'form-control' %>
-        </div>
-        <br />
-        <br />
+      <h2>Add your credit card</h2>
+      <%= form_tag('/users/save_credit_card', method: :post, class: 'payment-form') do %>
         <span class="payment-errors col-md-12"></span>
 
         <div class="form-group">
@@ -57,13 +39,9 @@
           </div>
         </div>
         <div class="field actions">
-          <%= f.submit 'Next step', class: "btn-success btn-full-width btn" %>
+          <%= submit_tag 'Save', class: "btn-success btn-full-width btn" %>
         </div>
       <% end %>
     </div>
-  </div>
-  <div class="row" style="margin-top: 15px;">
-
-    <center>You need help ? write to: <a href="mailto:hello@workful.co">hello@workful.co</a></center>
   </div>
 </div>

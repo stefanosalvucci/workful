@@ -6,7 +6,7 @@
       <span class="order-item-price">$ <%= order_item.amount_credit %></span>
       <span class="order-item-price">
         <% if order_item.item.amount_save.present? %>
-          <b><%= order_item.item.amount_save %> saved</b>
+          <b><%= order_item.item.amount_save %>% discount</b>
         <% end %>
       </span>
       <%= form_tag order_item_path(order_item.id), method: :delete, remote: true do %>
@@ -16,11 +16,50 @@
     </li>
   <% end %>
 </ul>
+<br />
 <div class="checkout">
-  <span class="total-checkout">
-    Total Checkout:
-  </span>
-  <span class="total-checkout-amount">
-    <%= @total_checkout %>
-  </span>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <span class="total-checkout">
+          Total to pay:
+        </span>
+      </div>
+      <div class="col-md-4">
+        <span class="total-checkout-amount">
+          $ <%= @total_checkout %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <span class="total-checkout">
+          You get credit for:
+        </span>
+      </div>
+      <div class="col-md-4">
+        <span class="total-checkout-amount">
+          $ <%= @total_checkout_credit %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <span class="total-checkout">
+          You get for <b>free</B>: 
+        </span>
+      </div>
+      <div class="col-md-4">
+        <span class="total-checkout-amount">
+          <% @save = @total_checkout_credit - @total_checkout %>
+          $ <%= @save %>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
+<br />

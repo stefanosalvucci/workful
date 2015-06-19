@@ -10,6 +10,8 @@ class Invite < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  validates :monthly_budget, presence: true, numericality: true, format: { :with => /\A\d{1,4}(\.\d{0,2})?\z/ }
+
   validates :email, presence: true, email: true
 
   def generate_code

@@ -6,6 +6,9 @@ class ItemSubscriptionsController < ApplicationController
   def create_subscriptions
     @order_items = OrderItem.where(user_id: current_user.id)
     return redirect_to pages_dashboard_path unless @order_items.present?
+    if !current_user.has_cc? and @order_items.sum(:amount_credit) > current_user.monthly_budget_left
+      return redirect_to new_credit_card_users_path
+    end
     @order_items.each do |order_item|
       @item_subscription = ItemSubscription.new
       @item_subscription.item_id = order_item.item_id
@@ -13,6 +16,11 @@ class ItemSubscriptionsController < ApplicationController
       @item_subscription.user_id = current_user.id
       @item_subscription.start_date = Date.today
       @item_subscription.end_date = Date.today + 1.month
+      if current_user.monthly_budget_left > order_item.amount_credit
+        # company pay
+      else
+        # user pay
+      end
       if @item_subscription.save
         OrderItem.destroy(order_item.id)
       end

@@ -4,6 +4,7 @@
   <title>Workful</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
@@ -11,8 +12,12 @@
     <%= render 'shared/navbar' %>
   <% end %>
   <% if notice.present? || alert.present? %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice.present? %>
+      <p class="notice alert-warning"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
   <% end %>
 <%= yield %>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

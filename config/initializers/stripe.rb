@@ -1,4 +1,4 @@
 require "stripe"
-Stripe.api_key = "5J7dr36JmNpLrXXFwAXChdRzZZwLyCHV"
-STRIPE_PUBLIC_KEY = "pk_B1SaM15nXXruDU3g2D6uns2kJeu9m"
+Stripe.api_key = "sk_test_WV95AMh1q6KOMRzPjtg8Y89K"
+STRIPE_PUBLIC_KEY = "pk_test_p7iFs5JNt7Y5fbDaI6fUTHCd"
 

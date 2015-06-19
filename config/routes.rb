@@ -28,6 +28,11 @@ Rails.application.routes.draw do
 
   resources :items
   resources :item_categories
+
+  resource :users do
+    get 'new_credit_card', as: :new_credit_card
+    post 'save_credit_card'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

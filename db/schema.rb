@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603091110) do
+ActiveRecord::Schema.define(version: 20150617142911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150603091110) do
     t.string   "done_welcome_step"
     t.string   "phone_number"
     t.string   "email_company"
+    t.string   "stripe_id"
   end
 
   create_table "company_users", force: :cascade do |t|
@@ -106,11 +107,11 @@ ActiveRecord::Schema.define(version: 20150603091110) do
   create_table "item_subscriptions", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.float    "amount_credit"
+    t.decimal  "amount_credit", precision: 8, scale: 2
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -132,20 +133,20 @@ ActiveRecord::Schema.define(version: 20150603091110) do
   create_table "order_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.integer  "amount_credit"
+    t.decimal  "amount_credit", precision: 8, scale: 2
     t.integer  "unit"
     t.integer  "price_unit"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                          default: "", null: false
+    t.string   "encrypted_password",                             default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                                  default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -154,6 +155,8 @@ ActiveRecord::Schema.define(version: 20150603091110) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "stripe_id"
+    t.decimal  "monthly_budget",         precision: 8, scale: 2
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

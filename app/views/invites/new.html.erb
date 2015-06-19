@@ -44,24 +44,26 @@
             <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
           </div>
           <div class="col-md-3 field">
-            <div class="col-md-9 field">
+            <div class="col-md-6 field" style="padding-right: 0px;">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3" style="padding: 10px; padding-left: 23px; font-size: 18px; margin-left: -27px;">
                   $
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9" style="padding-right: 0px;">
                   <%= f.text_field :monthly_budget, placeholder: '100', class: 'form-control' %>
                 </div>
               </div>
             </div>
-            <div class="col-md-3">
-              <%= f.submit 'Add', class: 'btn btn-primary' %>
+            <div class="col-md-3" style="padding-left: 0px;">
+              <%= f.submit 'Send Invite', class: 'btn btn-lg btn-warning' %>
             </div>
           </div>
         <% end %>
       </div>
       <div class="row actions">
-        <%= link_to "Ok, I've done", wizard_invite_done_invites_path, class: "btn btn-lg btn-success", method: :post %>
+        <div class="col-md-12" style="text-align: center; padding-top: 30px;">
+          <%= link_to "Ok, I've done", wizard_invite_done_invites_path, class: "btn btn-lg btn-success", method: :post %>
+        </div>
       </div>
     </div>
   </div>

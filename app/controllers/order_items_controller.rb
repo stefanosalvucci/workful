@@ -7,6 +7,12 @@ class OrderItemsController < ApplicationController
     order_item.amount_credit = params[:amount_credit]
     if order_item.save
       @total_checkout = OrderItem.where(user_id: current_user.id).sum(:amount_credit)
+      @order_items = OrderItem.where(user_id: current_user.id)
+      @total_discount = 0
+      @order_items.each do |order_item|
+        @total_discount = @total_discount + order_item.item.amount_save
+      end
+      @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
       render 'shared/_order_items_create', total_checkout: @total_checkout, change: ['shopping-cart']
     else
 

@@ -38,6 +38,7 @@ class InvitesController < ApplicationController
       @invite = Invite.where(invite_code: params[:invite_code], joined: false).first
       if @invite.present?
         @user = User.new(params_user)
+        @user.monthly_budget = @invite.monthly_budget
         if @user.save
           CompanyUser.create(company_id: @invite.company.id, user_id: @user.id, role_in_company: 'user')
           @invite.update_attribute :joined, true

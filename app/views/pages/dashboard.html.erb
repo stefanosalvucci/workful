@@ -5,31 +5,46 @@
         <% @categories.each do |category| %>
           <div class="item-category">
             <h3><%= category.name %></h3>
-            <% category.items.each do |item| %>
-              <div class="item">
-                <div class="item-image">
-                  <%= image_tag item.image.url(:thumb) %>
-                </div>
-                <div class="item-name">
-                  <%= item.name %>
-                </div>
-                <%= form_tag order_items_path, remote: true do %>
-                  <div class="item-info">
-                      <%= hidden_field_tag :item_id, item.id %>
-                      <%= text_field_tag :amount_credit, '', placeholder: '$ 100', class: 'form-control' %>
+            <div class="row">
+              <% category.items.each do |item| %>
+                <div class="item col-md-3 col-md-offset-1">
+                  <div class="row">
+                    <div class="item-image">
+                      <%= image_tag item.image.url(:thumb) %>
+                    </div>
                   </div>
-                  <div class="item-actions">
-                    <button class="btn btn-success full-width-u">Add</button>
+                  <div class="row">
+                    <div class="item-name">
+                      <%= item.name %>
+                    </div>
                   </div>
-                <% end %>
-              </div>
-            <% end %>
+                  <div class="row">
+                    <%= form_tag order_items_path, remote: true do %>
+                      <div class="item-info">
+                        <div class="col-md-12">
+                          <div class="col-md-2" style="padding-left: 25px; padding-top: 10px; font-size: 18px; padding-right: 0px;">
+                            $
+                          </div>
+                          <div class="col-md-9">
+                            <%= hidden_field_tag :item_id, item.id %>
+                            <%= text_field_tag :amount_credit, '', placeholder: '100', class: 'form-control' %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item-actions">
+                        <button class="btn btn-success full-width-u">Add</button>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-3 col-md-offset-1 box-white">
+    <div class="col-md-3 col-md-offset-1 box-white shopping-cart-box">
       <div id="shopping-cart">
         <%= render 'shared/shopping_cart' %>
         <%= link_to 'Checkout', create_subscriptions_item_subscriptions_path, class: 'btn btn-success full-width-u' %>

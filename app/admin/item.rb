@@ -11,6 +11,7 @@ ActiveAdmin.register Item do
       f.input :min_price_unit
       f.input :image, :required => false, :as => :file
       f.input :item_category_id, as: :select, collection: ItemCategory.all
+      f.input :amount_save
     end
     f.actions
   end

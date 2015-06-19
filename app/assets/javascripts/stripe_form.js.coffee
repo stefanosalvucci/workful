@@ -1,6 +1,5 @@
 $ ->
   $(document).on 'submit', '.payment-form', (event) ->
-    alert 'io'
     event.preventDefault()
     $form = $(this)
     # Disable the submit button to prevent repeated clicks
@@ -10,7 +9,6 @@ $ ->
     return false
 
   stripeResponseHandler = (status, response) ->
-    alert 'ok'
     $form = $('.payment-form')
     if response.error
       # Show the errors on the form

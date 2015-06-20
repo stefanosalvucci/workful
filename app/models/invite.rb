@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: invites
+#
+#  id             :integer          not null, primary key
+#  first_name     :string
+#  last_name      :string
+#  email          :string
+#  invite_code    :string
+#  joined         :boolean          default(FALSE)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  monthly_budget :decimal(, )
+#  company_id     :integer
+#
+
 require 'valid_email'
 
 class Invite < ActiveRecord::Base

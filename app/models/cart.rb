@@ -12,7 +12,7 @@
 #  updated_at    :datetime         not null
 #
 
-class OrderItem < ActiveRecord::Base
+class Cart < ActiveRecord::Base
   belongs_to :item
   belongs_to :user
 end

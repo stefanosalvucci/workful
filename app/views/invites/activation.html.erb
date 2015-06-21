@@ -1,7 +1,7 @@
 <div class="signup-page">
   <div class="container">
     <div class="box">
-      <h2 class="text-center">Join to <%= @invite.company.name %></h2>
+      <h2 class="text-center">Join to <%= @company.name %></h2>
 
       <%= form_for(@user, url: create_account_invites_path) do |f| %>
         <div class="row">
@@ -22,16 +22,18 @@
         <br />
         <div class="field">
           <%= label_tag 'Company Name' %><br />
-          <%= @invite.company.name %>
+          <%= @company.name %>
         </div>
         <br />
 
-        <%= hidden_field_tag :company_id, @invite.company.id %>
-        <%= hidden_field_tag :invite_code, @invite.invite_code %>
+        <%= hidden_field_tag :company_id, @company.id %>
+        <%= hidden_field_tag :invite_code, @company.invite_code %>
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          <div class="form-inline">
+          <%= f.text_field :email, autofocus: true, class: 'form-control' %> <span>@ <%= @company.domain %></span>
+          </div>
         </div>
 
         <div class="field">

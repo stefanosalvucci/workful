@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 box-white">
+      <h1>Share this url with all your employees</h1>
+      <div class="alert alert-warning" role="alert">
+        <a href="mailto:?subject=Join workful?body=asdadasd"><%= activation_invites_url(@company.invite_code) %></a>
+      </div>
+      <div class="row actions">
+        <div class="col-md-12" style="text-align: center; padding-top: 30px;">
+          <%= link_to "Ok, I've done", authenticated_path, class: "btn btn-lg btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

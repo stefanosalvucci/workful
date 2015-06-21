@@ -2,60 +2,25 @@
   <div class="row">
     <div class="col-md-12 box-white">
       <h1>Configure Company</h1>
-      <%= form_for @company, :html => {:class => "payment-form"} do |f| %>
+      <%= form_for @company, remote: true do |f| %>
         <div class="field">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>
         </div>
         <div class="field">
-          <%= f.label :url %>
-          <%= f.text_field :url, class: 'form-control' %>
+          <%= f.label :domain %>
+          <div class="form-inline">
+            @ <%= f.text_field :domain, class: 'form-control' %>
+          </div>
         </div>
         <div class="field">
-          <%= f.label :phone_number %>
-          <%= f.text_field :phone_number, class: 'form-control' %>
-        </div>
-        <div class="field">
-          <%= f.label :email_company %>
-          <%= f.text_field :email_company, class: 'form-control' %>
+          <%= f.label :monthly_budget, 'Monthly Budget per employee' %>
+          <div class="form-inline">
+         $  <%= f.text_field :monthly_budget, class: 'form-control' %>
+          </div>
         </div>
         <br />
         <br />
-        <span class="payment-errors col-md-12"></span>
-
-        <div class="form-group">
-          <label for="cardNumber">
-              CARD NUMBER</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number" data-stripe="number" required />
-            <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-7 col-md-7">
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-12">
-                  <label for="expityMonth">EXPIRY DATE</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6 col-lg-6 pl-ziro">
-                  <input type="text" class="form-control" id="expityMonth" placeholder="MM" data-stripe="exp-month" maxlength="2" required />
-                </div>
-                <div class="col-xs-6 col-lg-6 pl-ziro">
-                  <input type="text" class="form-control" id="expityYear" placeholder="YY" data-stripe="exp-year" maxlength="2" required />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-5 col-md-5 pull-right">
-            <div class="form-group">
-              <label for="cvCode">CV CODE</label>
-              <input type="password" class="form-control" id="cvCode" placeholder="CV" data-stripe="cvc" maxlength="3" required />
-            </div>
-          </div>
-        </div>
         <div class="field actions">
           <%= f.submit 'Next step', class: "btn-success btn-full-width btn" %>
         </div>

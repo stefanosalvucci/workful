@@ -2,8 +2,8 @@ class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.string :name
-      t.integer :price_unit
-      t.integer :min_price_unit
+      t.integer :min_credit, :decimal, :precision => 8, :scale => 2, default: 0
+      t.integer :max_credit, :decimal, :precision => 8, :scale => 2, default: 0
       t.integer :item_category_id
 
       t.timestamps null: false

@@ -1,16 +1,16 @@
 <h1>Your Cart</h1>
 <ul class="order-items">
-  <% current_user.order_items.each do |order_item| %>
+  <% current_user.carts.each do |cart| %>
     <li class="order-item">
-      <span class="order-item-name"><%= order_item.item.name %></span>
-      <span class="order-item-price">$ <%= order_item.amount_credit %></span>
+      <span class="order-item-name"><%= cart.item.name %></span>
+      <span class="order-item-price">$ <%= cart.amount %></span>
       <span class="order-item-price">
-        <% if order_item.item.amount_save.present? %>
-          <b><%= order_item.item.amount_save %>% discount</b>
+        <% if cart.item.amount_save.present? %>
+          <b><%= cart.item.amount_save %>% discount</b>
         <% end %>
       </span>
-      <%= form_tag order_item_path(order_item.id), method: :delete, remote: true do %>
-        <%= hidden_field_tag :order_item_id, order_item.id %>
+      <%= form_tag cart_path(cart.id), method: :delete, remote: true do %>
+        <%= hidden_field_tag :cart_id, cart.id %>
         <%= submit_tag "Remove", class: 'btn btn-danger' %>
       <% end %>
     </li>

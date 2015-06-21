@@ -49,15 +49,23 @@ ActiveRecord::Schema.define(version: 20150617142911) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "carts", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "user_id"
+    t.decimal  "amount",     precision: 8, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string   "name"
-    t.string   "url"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.boolean  "done_welcome"
+    t.string   "domain"
+    t.decimal  "monthly_budget",    precision: 8, scale: 2, default: 0.0
+    t.string   "invite_code"
+    t.boolean  "done_welcome",                              default: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.string   "done_welcome_step"
-    t.string   "phone_number"
-    t.string   "email_company"
     t.string   "stripe_id"
   end
 
@@ -85,18 +93,6 @@ ActiveRecord::Schema.define(version: 20150617142911) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "invites", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "invite_code"
-    t.boolean  "joined",         default: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.decimal  "monthly_budget"
-    t.integer  "company_id"
-  end
-
   create_table "item_categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -107,46 +103,34 @@ ActiveRecord::Schema.define(version: 20150617142911) do
   create_table "item_subscriptions", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.decimal  "amount_credit", precision: 8, scale: 2
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.decimal  "amount",     precision: 8, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.integer  "price_unit"
-    t.integer  "min_price_unit"
+    t.integer  "min_credit",         default: 0
+    t.integer  "decimal",            default: 0
+    t.integer  "max_credit",         default: 0
     t.integer  "item_category_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "order"
-    t.float    "min_credit"
     t.integer  "amount_save"
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.integer  "item_id"
-    t.integer  "user_id"
-    t.decimal  "amount_credit", precision: 8, scale: 2
-    t.integer  "unit"
-    t.integer  "price_unit"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string   "email",                                          default: "", null: false
-    t.string   "encrypted_password",                             default: "", null: false
+    t.string   "email",                                          default: "",  null: false
+    t.string   "encrypted_password",                             default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                  default: 0,  null: false
+    t.integer  "sign_in_count",                                  default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -156,7 +140,7 @@ ActiveRecord::Schema.define(version: 20150617142911) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "stripe_id"
-    t.decimal  "monthly_budget",         precision: 8, scale: 2
+    t.decimal  "monthly_budget",         precision: 8, scale: 2, default: 0.0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

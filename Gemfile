@@ -17,8 +17,6 @@ gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations"
 
 gem 'valid_email'
 
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-
 gem 'aws-sdk', '~> 1.6'
 
 gem "figaro"

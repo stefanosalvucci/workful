@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_one :company_user
   has_one :company, through: :company_user
 
-  has_many :order_items
+  has_many :carts, foreign_key: 'user_id'
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def has_order?
-    return true if self.order_items.present?
+    return true if self.carts.present?
   end
 
   def has_cc?
@@ -49,6 +49,6 @@ class User < ActiveRecord::Base
   end
 
   def monthly_budget_left
-    self.monthly_budget - self.item_subscriptions.sum(:amount_credit)
+    self.monthly_budget - self.item_subscriptions.sum(:amount)
   end
 end

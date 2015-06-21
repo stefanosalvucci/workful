@@ -4,25 +4,25 @@ class ItemSubscriptionsController < ApplicationController
   end
 
   def create_subscriptions
-    @order_items = OrderItem.where(user_id: current_user.id)
-    return redirect_to pages_dashboard_path unless @order_items.present?
-    if !current_user.has_cc? and @order_items.sum(:amount_credit) > current_user.monthly_budget_left
+    @carts = Cart.where(user_id: current_user.id)
+    return redirect_to pages_dashboard_path unless @carts.present?
+    if !current_user.has_cc? and @carts.sum(:amount) > current_user.monthly_budget_left
       return redirect_to new_credit_card_users_path
     end
-    @order_items.each do |order_item|
+    @carts.each do |cart|
       @item_subscription = ItemSubscription.new
-      @item_subscription.item_id = order_item.item_id
-      @item_subscription.amount_credit = order_item.amount_credit
+      @item_subscription.item_id = cart.item_id
+      @item_subscription.amount = cart.amount
       @item_subscription.user_id = current_user.id
       @item_subscription.start_date = Date.today
       @item_subscription.end_date = Date.today + 1.month
-      if current_user.monthly_budget_left > order_item.amount_credit
+      if current_user.monthly_budget_left > cart.amount
         # company pay
       else
         # user pay
       end
       if @item_subscription.save
-        OrderItem.destroy(order_item.id)
+        Cart.destroy(cart.id)
       end
     end
     redirect_to item_subscriptions_path
@@ -49,6 +49,6 @@ class ItemSubscriptionsController < ApplicationController
 
   private
   def item_subscriptions_params
-    params.require(:item_subscription).permit(:id, :amount_credit)
+    params.require(:item_subscription).permit(:id, :amount)
   end
 end

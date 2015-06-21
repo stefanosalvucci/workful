@@ -4,8 +4,9 @@
 #
 #  id                 :integer          not null, primary key
 #  name               :string
-#  price_unit         :integer
-#  min_price_unit     :integer
+#  min_credit         :integer          default(0)
+#  decimal            :integer          default(0)
+#  max_credit         :integer          default(0)
 #  item_category_id   :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
@@ -14,7 +15,6 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  order              :integer
-#  min_credit         :float
 #  amount_save        :integer
 #
 

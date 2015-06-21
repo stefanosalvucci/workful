@@ -18,7 +18,7 @@
 #  first_name             :string
 #  last_name              :string
 #  stripe_id              :string
-#  monthly_budget         :decimal(8, 2)
+#  monthly_budget         :decimal(8, 2)    default(0.0)
 #
 
 class User < ActiveRecord::Base

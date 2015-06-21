@@ -4,13 +4,13 @@
 #
 #  id                :integer          not null, primary key
 #  name              :string
-#  url               :string
+#  domain            :string
+#  monthly_budget    :decimal(8, 2)    default(0.0)
+#  invite_code       :string
+#  done_welcome      :boolean          default(FALSE)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  done_welcome      :boolean
 #  done_welcome_step :string
-#  phone_number      :string
-#  email_company     :string
 #  stripe_id         :string
 #
 

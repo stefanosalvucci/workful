@@ -14,8 +14,9 @@ class ItemSubscriptionsController < ApplicationController
       @item_subscription.item_id = cart.item_id
       @item_subscription.amount = cart.amount
       @item_subscription.user_id = current_user.id
-      @item_subscription.start_date = Date.today
-      @item_subscription.end_date = Date.today + 1.month
+      # apparently fields are not on the DB
+      # @item_subscription.start_date = Date.today
+      # @item_subscription.end_date = Date.today + 1.month
       if current_user.monthly_budget_left > cart.amount
         # company pay
       else

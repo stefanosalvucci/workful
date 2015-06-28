@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get 'configure'
     end
   end
-  resources :carts, only: [:create, :destroy]
+  resources :carts, only: [:create, :destroy, :update]
   resources :item_subscriptions, path: 'subscriptions', only: [:index, :edit, :update, :destroy] do
     collection do
       get 'create_subscriptions'

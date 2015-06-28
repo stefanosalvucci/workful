@@ -1,19 +1,7 @@
-<h1>Your Cart</h1>
+<h5>Your credit available is <%= current_user.monthly_budget_left.to_i %>$/month</h5>
 <ul class="order-items">
-  <% current_user.carts.each do |cart| %>
-    <li class="order-item">
-      <span class="order-item-name"><%= cart.item.name %></span>
-      <span class="order-item-price">$ <%= cart.amount %></span>
-      <span class="order-item-price">
-        <% if cart.item.amount_save.present? %>
-          <b><%= cart.item.amount_save %>% discount</b>
-        <% end %>
-      </span>
-      <%= form_tag cart_path(cart.id), method: :delete, remote: true do %>
-        <%= hidden_field_tag :cart_id, cart.id %>
-        <%= submit_tag "Remove", class: 'btn btn-danger' %>
-      <% end %>
-    </li>
+  <% current_user.carts.each do |cart_element| %>
+    <%= render partial: 'shared/cart_element', locals: {cart_element: cart_element}%>
   <% end %>
 </ul>
 <br />

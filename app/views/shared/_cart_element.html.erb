@@ -1,0 +1,28 @@
+<li class="order-item" style="padding-top: 30px;">
+  <table class="table-bordered">
+    <tbody>
+      <tr>
+        <td style="width: 150px; position: relative;">
+          <div>
+            <%= form_tag cart_path(cart_element.id), method: :delete, remote: true do %>
+              <%= hidden_field_tag :cart_id, cart_element.id %>
+              <%= submit_tag "x", style: "position:absolute; top: 0px; right: 0px; padding: 2px;" %>
+            <% end %>
+          </div>
+          <div>
+            <p style="text-align: center;"><%= cart_element.item.description %></p>
+            <div style="padding: 0 35px; height: 80px;"><%= image_tag cart_element.item.image, width: '80px'%></div>
+          </div>
+        </td>
+        <td style="width: 120px; text-align: center;">
+          <div>
+            <%= form_tag cart_path(cart_element.id), method: :patch, remote: true, id: cart_element.id do %>
+              <%= hidden_field_tag :cart_id, cart_element.id %>
+              <%= select_tag :amount, options_for_select([["25$", 25], ["50$", 50], ["100$", 100], ["150$", 150], ["200$", 200]], selected: cart_element.amount.to_i), onchange: ("$('##{cart_element.id}').submit()") %>
+          <% end %>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</li>

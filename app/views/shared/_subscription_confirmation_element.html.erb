@@ -21,6 +21,11 @@
             <%= f.submit :submit %>
           <% end %>
         </div>
+        <div class="col-md-1">or</div>
+        <div class="col-md-6">
+          <p>If you don't have an account for this service yet do it here:</p>
+          <%= link_to 'Signup with our custom URL', element.item.custom_signup_url, target: "_blank", class: "" %>
+        </div>
       </div>
     </div>
   <% end %>

@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20150617142911) do
     t.integer  "max_credit",         default: 0
     t.integer  "item_category_id"
     t.string   "description"
+    t.string   "custom_signup_url"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.string   "image_file_name"

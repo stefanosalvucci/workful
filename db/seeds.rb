@@ -10,7 +10,7 @@ company.users.create(
   password: 'password',
   first_name: 'Test',
   last_name: 'Example',
-  monthly_budget: '0.00'
+  monthly_budget: 200.0
 )
 
 AdminUser.create(

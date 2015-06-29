@@ -30,6 +30,8 @@
                       <div class="item-actions">
                         <% if @item_in_cart.include?(item.id) %>
                           <button class="btn btn-success full-width-u disabled">Added</button>
+                        <% elsif @items_already_subscribed.include?(item.id) %>
+                          <button class="btn btn-success full-width-u disabled">Already Subscribed</button>
                         <% else %>
                           <button class="btn btn-success full-width-u">Add</button>
                         <% end %>

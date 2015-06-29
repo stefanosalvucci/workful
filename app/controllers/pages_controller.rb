@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @total_checkout = Cart.where(user_id: current_user.id).sum(:amount)
     @carts = Cart.where(user_id: current_user.id)
     @item_in_cart = @carts.map &:item_id
+    @items_already_subscribed = current_user.item_subscriptions.map(&:item_id)
     @total_discount = 0
     @carts.each do |cart|
       @total_discount = @total_discount + cart.item.amount_save

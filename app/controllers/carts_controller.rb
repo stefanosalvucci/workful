@@ -13,6 +13,7 @@ class CartsController < ApplicationController
         @total_discount = @total_discount + cart.item.amount_save
       end
       @item_in_cart = @carts.map &:item_id
+      @items_already_subscribed = current_user.item_subscriptions.map(&:item_id)
       @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
       render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard']
@@ -44,6 +45,7 @@ class CartsController < ApplicationController
         @total_discount = @total_discount + cart.item.amount_save
       end
       @item_in_cart = @carts.map &:item_id
+      @items_already_subscribed = current_user.item_subscriptions.map(&:item_id)
       @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
     render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard']

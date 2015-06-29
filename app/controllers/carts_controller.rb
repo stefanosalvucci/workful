@@ -12,8 +12,10 @@ class CartsController < ApplicationController
       @carts.each do |cart|
         @total_discount = @total_discount + cart.item.amount_save
       end
+      @item_in_cart = @carts.map &:item_id
+      @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
-      render 'shared/_cart_create', total_checkout: @total_checkout, change: ['shopping-cart']
+      render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard']
     else
 
     end
@@ -41,7 +43,9 @@ class CartsController < ApplicationController
       @carts.each do |cart|
         @total_discount = @total_discount + cart.item.amount_save
       end
+      @item_in_cart = @carts.map &:item_id
+      @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
-    render 'shared/_cart_create', total_checkout: @total_checkout, change: ['shopping-cart']
+    render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard']
   end
 end

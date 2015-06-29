@@ -8,4 +8,8 @@ module ApplicationHelper
 
     class_name.join(' ')
   end
+
+  def display_next_month
+    (Date.today + 1.month).strftime("%B")
+  end
 end

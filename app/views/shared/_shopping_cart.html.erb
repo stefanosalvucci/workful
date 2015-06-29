@@ -1,6 +1,6 @@
-<h5>Your credit available is <%= current_user.monthly_budget_left.to_i %>$/month</h5>
+<h2 style="text-align: center;">Cart</h2>
 <ul class="order-items">
-  <% current_user.carts.each do |cart_element| %>
+  <% current_user.carts.order(:created_at).each do |cart_element| %>
     <%= render partial: 'shared/cart_element', locals: {cart_element: cart_element}%>
   <% end %>
 </ul>
@@ -14,7 +14,7 @@
         </span>
       </div>
       <div class="col-md-4">
-        <span class="total-checkout-amount">
+        <span class="total-checkout-amount <%= 'has_error' if current_user.monthly_budget_left < @total_checkout %> ">
           $ <%= @total_checkout %>
         </span>
       </div>
@@ -29,7 +29,7 @@
       </div>
       <div class="col-md-4">
         <span class="total-checkout-amount">
-          $ <%= @total_checkout_credit %>
+          $ <%= current_user.monthly_budget_left %>
         </span>
       </div>
     </div>
@@ -38,16 +38,20 @@
     <div class="col-md-12">
       <div class="col-md-8">
         <span class="total-checkout">
-          You get for <b>free</B>: 
+          Credit valid for
         </span>
       </div>
       <div class="col-md-4">
         <span class="total-checkout-amount">
-          <% @save = @total_checkout_credit - @total_checkout %>
-          $ <%= @save %>
+          <%= display_next_month %>
         </span>
       </div>
     </div>
   </div>
 </div>
 <br />
+<% if current_user.monthly_budget_left < @total_checkout %>
+  <%= link_to 'Not enough credit :(', create_subscriptions_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
+<% else %>
+  <%= link_to 'Checkout', create_subscriptions_item_subscriptions_path, class: "btn btn-success full-width-u" %>
+<% end %>

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <div class="categories">
+      <div class="categories" id="dashboard">
         <% @categories.each do |category| %>
           <div class="item-category">
             <h3><%= category.name %></h3>
@@ -28,7 +28,11 @@
                         </div>
                       </div>
                       <div class="item-actions">
-                        <button class="btn btn-success full-width-u">Add</button>
+                        <% if @item_in_cart.include?(item.id) %>
+                          <button class="btn btn-success full-width-u disabled">Added</button>
+                        <% else %>
+                          <button class="btn btn-success full-width-u">Add</button>
+                        <% end %>
                       </div>
                     <% end %>
                   </div>
@@ -43,7 +47,6 @@
     <div class="col-md-3 col-md-offset-1 box-white shopping-cart-box">
       <div id="shopping-cart">
         <%= render 'shared/shopping_cart' %>
-        <%= link_to 'Checkout', create_subscriptions_item_subscriptions_path, class: 'btn btn-success full-width-u' %>
       </div>
     </div>
   </div>

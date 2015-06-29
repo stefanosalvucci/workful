@@ -53,5 +53,5 @@
 <% if current_user.monthly_budget_left < @total_checkout %>
   <%= link_to 'Not enough credit :(', create_subscriptions_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
 <% else %>
-  <%= link_to 'Checkout', create_subscriptions_item_subscriptions_path, class: "btn btn-success full-width-u" %>
+  <%= link_to 'Checkout', pre_checkout_item_subscriptions_path, class: "btn btn-success full-width-u" %>
 <% end %>

@@ -1,0 +1,23 @@
+<div class="subscriptions-confirmation" id="subscriptions-confirmation">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Workful</h1>
+        <h5>Innovative solutions for everyday needs</h5>
+        <h4><%= current_user.first_name.capitalize%>, enjoy the following benefits you chose for this month!</h4>
+      </div>
+    </div>
+    <% @active_subscriptions.each do |subscription| %>
+      <%= render partial: 'shared/subscription_confirmation_element', locals: {element: subscription}%>
+    <% end %>
+    <div class="row" style="padding-top:30px;">
+      <div class="col-md-2">
+        <% if current_user.subscription_profiles_completed? %>
+          <%= link_to 'My subscriptions', item_subscriptions_path, class: "btn btn-success" %>
+        <% else %>
+          <%= link_to 'Please complete missing profiles', item_subscriptions_path, class: "btn btn-success disabled" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

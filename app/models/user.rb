@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: users
@@ -41,7 +42,11 @@ class User < ActiveRecord::Base
   end
 
   def has_order?
-    return true if self.carts.present?
+    self.carts.present?
+  end
+
+  def subscription_profiles_completed?
+    !item_subscriptions.map(&:service_email).include? nil
   end
 
   def has_cc?

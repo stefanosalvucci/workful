@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :item_subscriptions, path: 'subscriptions', only: [:index, :edit, :update, :destroy] do
     collection do
       get 'create_subscriptions'
+      get 'pre_checkout'
+      get 'subscriptions_confirmation'
     end
   end
   devise_for :admin_users, ActiveAdmin::Devise.config

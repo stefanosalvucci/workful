@@ -3,10 +3,15 @@ class ItemSubscriptionsController < ApplicationController
     @item_subscriptions = ItemSubscription.where(user_id: current_user.id)
   end
 
+  def pre_checkout
+    @cart_elements = current_user.carts.order(:created_at)
+  end
+
   def create_subscriptions
     @carts = Cart.where(user_id: current_user.id)
     return redirect_to pages_dashboard_path unless @carts.present?
-    if !current_user.has_cc? and @carts.sum(:amount) > current_user.monthly_budget_left
+    if @carts.sum(:amount) > current_user.monthly_budget_left
+      raise 'should not happen'
       return redirect_to new_credit_card_users_path
     end
     @carts.each do |cart|
@@ -17,16 +22,15 @@ class ItemSubscriptionsController < ApplicationController
       # apparently fields are not on the DB
       # @item_subscription.start_date = Date.today
       # @item_subscription.end_date = Date.today + 1.month
-      if current_user.monthly_budget_left > cart.amount
-        # company pay
-      else
-        # user pay
-      end
       if @item_subscription.save
         Cart.destroy(cart.id)
       end
     end
-    redirect_to item_subscriptions_path
+    redirect_to subscriptions_confirmation_item_subscriptions_path
+  end
+
+  def subscriptions_confirmation
+    @active_subscriptions = current_user.item_subscriptions
   end
 
   def edit
@@ -36,7 +40,12 @@ class ItemSubscriptionsController < ApplicationController
   def update
     @item_subscription = ItemSubscription.find(params[:id])
     if @item_subscription.update item_subscriptions_params
-      redirect_to item_subscriptions_path
+      if params['amount']
+        redirect_to item_subscriptions_path
+      else
+        @active_subscriptions = current_user.item_subscriptions
+        render 'subscriptions_confirmation', change: ['subscriptions-confirmation']
+      end
     else
       render :edit, alert: 'Something gone wrong'
     end
@@ -50,6 +59,6 @@ class ItemSubscriptionsController < ApplicationController
 
   private
   def item_subscriptions_params
-    params.require(:item_subscription).permit(:id, :amount)
+    params.require(:item_subscription).permit(:id, :amount, :service_email)
   end
 end

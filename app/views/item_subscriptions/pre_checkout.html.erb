@@ -1,0 +1,27 @@
+<div class="pre-checkout">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Workful</h1>
+        <h5>Innovative solutions for everyday needs</h5>
+        <h4>Benefits summary - <%= display_next_month %></h4>
+      </div>
+    </div>
+    <% @cart_elements.each do |cart_element| %>
+      <%= render partial: 'shared/pre_checkout_element', locals: {element: cart_element}%>
+    <% end %>
+    <div class="row" style="padding-top:30px;">
+      <div class="col-md-8">
+        <p>Your preferences will be saved for the next months. You can always change them from your personal dashboard</p>
+      </div>
+    </div>
+    <div style="row">
+      <div class="col-md-1">
+        <%= link_to 'Confirm', create_subscriptions_item_subscriptions_path, class: "btn btn-success" %>
+      </div>
+      <div class="col-md-1">
+        <%= link_to 'Back', root_path, class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+</div>

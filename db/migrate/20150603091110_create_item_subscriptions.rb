@@ -3,6 +3,7 @@ class CreateItemSubscriptions < ActiveRecord::Migration
     create_table :item_subscriptions do |t|
       t.integer :item_id
       t.integer :user_id
+      t.string :service_email
       t.decimal :amount, :precision => 8, :scale => 2
 
       t.timestamps null: false

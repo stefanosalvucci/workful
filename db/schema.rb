@@ -103,9 +103,10 @@ ActiveRecord::Schema.define(version: 20150617142911) do
   create_table "item_subscriptions", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "user_id"
-    t.decimal  "amount",     precision: 8, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string   "service_email"
+    t.decimal  "amount",        precision: 8, scale: 2
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "items", force: :cascade do |t|

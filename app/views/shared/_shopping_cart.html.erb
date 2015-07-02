@@ -10,26 +10,12 @@
     <div class="col-md-12">
       <div class="col-md-8">
         <span class="total-checkout">
-          Total to pay:
-        </span>
-      </div>
-      <div class="col-md-4">
-        <span class="total-checkout-amount <%= 'has_error' if current_user.monthly_budget_left < @total_checkout %> ">
-          $ <%= @total_checkout %>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-8">
-        <span class="total-checkout">
-          You get credit for:
+          Total credit available:
         </span>
       </div>
       <div class="col-md-4">
         <span class="total-checkout-amount">
-          $ <%= current_user.monthly_budget_left %>
+          $ <%= current_user.monthly_budget_left.to_i %>
         </span>
       </div>
     </div>
@@ -38,7 +24,21 @@
     <div class="col-md-12">
       <div class="col-md-8">
         <span class="total-checkout">
-          Credit valid for
+          Credit left after:
+        </span>
+      </div>
+      <div class="col-md-4">
+        <span class="total-checkout-amount <%= 'has_error' if current_user.monthly_budget_left < @total_checkout %> ">
+          $ <%= (current_user.monthly_budget_left - @total_checkout).to_i %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-8">
+        <span class="total-checkout">
+          Credit valid for:
         </span>
       </div>
       <div class="col-md-4">

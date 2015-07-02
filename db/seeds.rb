@@ -23,7 +23,7 @@ AdminUser.create(
 end
 
 seed_services = [
-  ['Uber', 'Travel', 'brings you everywhere', 'http://www.tempo.ai/content/uploads/2015/01/Uber-Logo-550x550.jpg'],
+  ['Uber', 'Travel', 'brings you everywhere', 'http://the305.com/blog/wp-content/uploads/2014/06/uber-logo.jpg'],
   ['Handy', 'Chores', 'amazing service', 'http://core0.staticworld.net/images/article/2014/09/handy_logo-100435695-large.jpg'],
   ['Washio', 'Chores', 'wash stuff?', 'https://d1qb2nb5cznatu.cloudfront.net/startups/i/138210-90726fa7f6e3a5aa532d50ffba5dc671-medium_jpg.jpg?buster=1375820899'],
   ['Instacart', 'Chores', 'cmon, it is insta', 'http://www.glutenfreebostongirl.com/wp-content/uploads/2014/04/Instacart-Logo-Green-Transparent-1024x299.png'],

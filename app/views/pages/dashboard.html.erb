@@ -1,4 +1,13 @@
 <div class="container">
+  <div class="row" id="welcome-message">
+    <div class="col-md-8">
+      <% if @benefits_left_to_chose == 0 || current_user.monthly_budget_left < @total_checkout %>
+        <h3>Welcome back <%= current_user.first_name %>, we're sorry but you cannot chose benefits anymore :(</h3>
+      <% else %>
+        <h3>Welcome back <%= current_user.first_name %>, choose up to <%= pluralize @benefits_left_to_chose, 'benefit' %> that you like!</h3>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-8">
       <div class="categories" id="dashboard">

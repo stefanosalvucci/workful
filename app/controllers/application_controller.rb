@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
 
+
+  def benefits_left_to_chose
+    ((current_user.monthly_budget_left - current_user.carts.sum(:amount)) / 25).to_i
+  end
+
   protected
   def authenticate_user!
     if user_signed_in?

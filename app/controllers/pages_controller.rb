@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @item_in_cart = @carts.map &:item_id
     @items_already_subscribed = current_user.item_subscriptions.map(&:item_id)
     @total_discount = 0
+    @benefits_left_to_chose = benefits_left_to_chose
     @carts.each do |cart|
       @total_discount = @total_discount + cart.item.amount_save
     end

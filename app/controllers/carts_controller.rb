@@ -14,9 +14,10 @@ class CartsController < ApplicationController
       end
       @item_in_cart = @carts.map &:item_id
       @items_already_subscribed = current_user.item_subscriptions.map(&:item_id)
+      @benefits_left_to_chose = benefits_left_to_chose
       @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
-      render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard']
+      render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard', 'welcome-message']
     else
 
     end
@@ -28,8 +29,13 @@ class CartsController < ApplicationController
     if cart.save
       @total_checkout = Cart.where(user_id: current_user.id).sum(:amount)
       @total_discount = 0
+      @carts = Cart.where(user_id: current_user.id)
+      @item_in_cart = @carts.map &:item_id
+      @items_already_subscribed = current_user.item_subscriptions.map(&:item_id)
+      @benefits_left_to_chose = benefits_left_to_chose
+      @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
-      render 'shared/_cart_create', total_checkout: @total_checkout, change: ['shopping-cart']
+      render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'welcome-message']
     else
 
     end
@@ -46,8 +52,9 @@ class CartsController < ApplicationController
       end
       @item_in_cart = @carts.map &:item_id
       @items_already_subscribed = current_user.item_subscriptions.map(&:item_id)
+      @benefits_left_to_chose = benefits_left_to_chose
       @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
-    render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard']
+    render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'dashboard', 'welcome-message']
   end
 end

@@ -50,7 +50,7 @@
   </div>
 </div>
 <br />
-<% if current_user.monthly_budget_left <= @total_checkout %>
+<% if current_user.monthly_budget_left < @total_checkout %>
   <%= link_to 'Not enough credit :(', create_subscriptions_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
 <% elsif @carts.empty? %>
   <%= link_to 'Empty cart', pre_checkout_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>

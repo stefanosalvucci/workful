@@ -40,7 +40,7 @@
                         <% if @item_in_cart.include?(item.id) %>
                           <button class="btn btn-success full-width-u disabled">Added</button>
                         <% elsif @items_already_subscribed.include?(item.id) %>
-                          <button class="btn btn-success full-width-u disabled">Already Subscribed</button>
+                          <button class="btn btn-success full-width-u">Add credit</button>
                         <% elsif current_user.monthly_budget_left <= @total_checkout %>
                           <button class="btn btn-success full-width-u disabled">No more credit</button>
                         <% else %>

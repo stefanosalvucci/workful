@@ -15,13 +15,10 @@ class ItemSubscriptionsController < ApplicationController
       return redirect_to new_credit_card_users_path
     end
     @carts.each do |cart|
-      @item_subscription = ItemSubscription.new
-      @item_subscription.item_id = cart.item_id
-      @item_subscription.amount = cart.amount
-      @item_subscription.user_id = current_user.id
-      # apparently fields are not on the DB
-      # @item_subscription.start_date = Date.today
-      # @item_subscription.end_date = Date.today + 1.month
+      @item_subscription = ItemSubscription.find_or_initialize_by(item_id: cart.item_id, user_id: current_user.id)
+      @item_subscription.item_id |= cart.item_id
+      @item_subscription.user_id |= current_user.id
+      @item_subscription.amount += cart.amount
       if @item_subscription.save
         Cart.destroy(cart.id)
       end

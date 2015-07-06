@@ -1,6 +1,6 @@
 class ItemSubscriptionsController < ApplicationController
   def index
-    @item_subscriptions = ItemSubscription.where(user_id: current_user.id)
+    @active_subscriptions = current_user.item_subscriptions.order(:id)
   end
 
   def pre_checkout
@@ -23,11 +23,7 @@ class ItemSubscriptionsController < ApplicationController
         Cart.destroy(cart.id)
       end
     end
-    redirect_to subscriptions_confirmation_item_subscriptions_path
-  end
-
-  def subscriptions_confirmation
-    @active_subscriptions = current_user.item_subscriptions.order(:id)
+    redirect_to item_subscriptions_path
   end
 
   def edit
@@ -41,7 +37,7 @@ class ItemSubscriptionsController < ApplicationController
         redirect_to item_subscriptions_path
       else
         @active_subscriptions = current_user.item_subscriptions.order(:id)
-        render 'subscriptions_confirmation', change: ['subscriptions-confirmation']
+        render '/item_subscriptions/index', change: ['subscriptions-confirmation']
       end
     else
       render :edit, alert: 'Something gone wrong'
@@ -50,8 +46,12 @@ class ItemSubscriptionsController < ApplicationController
 
   def destroy
     @item_subscription = ItemSubscription.find(params[:id])
-    @item_subscription.destroy
-    redirect_to item_subscriptions_path
+    if @item_subscription.destroy
+      @active_subscriptions = current_user.item_subscriptions.order(:id)
+      render '/item_subscriptions/index', change: ['subscriptions-confirmation']
+    else
+      render :index, alert: 'Something gone wrong'
+    end
   end
 
   private

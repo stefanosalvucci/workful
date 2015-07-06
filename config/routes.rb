@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     collection do
       get 'create_subscriptions'
       get 'pre_checkout'
-      get 'subscriptions_confirmation'
     end
   end
   devise_for :admin_users, ActiveAdmin::Devise.config

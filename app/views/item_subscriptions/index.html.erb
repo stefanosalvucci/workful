@@ -1,35 +1,15 @@
-<div class="my-subscriptions">
+<div class="subscriptions-confirmation" id="subscriptions-confirmation">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 box-white">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Category Service</th>
-              <th>Credit</th>
-              <th>Credit Paid from Company</th>
-              <th>Credit Paid from you</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @item_subscriptions.each do |item_subscription| %>
-              <tr>
-                <th><%= image_tag item_subscription.item.image.url(:thumb) %></th>
-                <th><%= item_subscription.item.item_category.name %></th>
-                <th><%= item_subscription.amount.to_i %>$</th>
-                <th>To do</th>
-                <th>To do</th>
-                <th>
-                  <%= link_to "Edit", edit_item_subscription_path(item_subscription.id), class: 'btn btn-primary' %>
-                  <%= link_to "Remove", item_subscription_path(item_subscription.id), method: :delete, class: 'btn btn-danger' %>
-                </th>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+      <div class="col-md-12">
+        <h1>Workful</h1>
+        <h5>Innovative solutions for everyday needs</h5>
+        <h4><%= current_user.first_name.capitalize%>, enjoy the following benefits you chose for <%= display_next_month %>!</h4>
       </div>
+    </div>
+    <% @active_subscriptions.each do |subscription| %>
+      <%= render partial: 'shared/subscription_confirmation_element', locals: {element: subscription}%>
+    <% end %>
     </div>
   </div>
 </div>

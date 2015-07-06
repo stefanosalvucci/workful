@@ -8,12 +8,12 @@
 <div class="checkout">
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <span class="total-checkout">
-          Total credit available:
+          Credit available:
         </span>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <span class="total-checkout-amount">
           $ <%= current_user.monthly_budget_left.to_i %>
         </span>
@@ -22,12 +22,12 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <span class="total-checkout">
-          Credit left after:
+          Credit left:
         </span>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <span class="total-checkout-amount <%= 'has_error' if current_user.monthly_budget_left < @total_checkout %> ">
           $ <%= (current_user.monthly_budget_left - @total_checkout).to_i %>
         </span>
@@ -36,12 +36,12 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <span class="total-checkout">
           Credit valid for:
         </span>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <span class="total-checkout-amount">
           <%= display_next_month %>
         </span>
@@ -52,6 +52,8 @@
 <br />
 <% if current_user.monthly_budget_left <= @total_checkout %>
   <%= link_to 'Not enough credit :(', create_subscriptions_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
+<% elsif @carts.empty? %>
+  <%= link_to 'Empty cart', pre_checkout_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
 <% else %>
   <%= link_to 'Checkout', pre_checkout_item_subscriptions_path, class: "btn btn-success full-width-u" %>
 <% end %>

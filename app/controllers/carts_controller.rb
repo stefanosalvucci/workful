@@ -35,7 +35,7 @@ class CartsController < ApplicationController
       @benefits_left_to_chose = benefits_left_to_chose
       @categories = ItemCategory.where(id: Item.all.pluck('DISTINCT item_category_id')).order('item_categories.order ASC')
       @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
-      render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'welcome-message']
+      render 'pages/dashboard', total_checkout: @total_checkout, change: ['shopping-cart', 'welcome-message', 'dashboard']
     else
 
     end

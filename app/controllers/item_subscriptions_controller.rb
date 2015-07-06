@@ -30,7 +30,7 @@ class ItemSubscriptionsController < ApplicationController
   end
 
   def subscriptions_confirmation
-    @active_subscriptions = current_user.item_subscriptions
+    @active_subscriptions = current_user.item_subscriptions.order(:id)
   end
 
   def edit
@@ -43,7 +43,7 @@ class ItemSubscriptionsController < ApplicationController
       if params['amount']
         redirect_to item_subscriptions_path
       else
-        @active_subscriptions = current_user.item_subscriptions
+        @active_subscriptions = current_user.item_subscriptions.order(:id)
         render 'subscriptions_confirmation', change: ['subscriptions-confirmation']
       end
     else

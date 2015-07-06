@@ -4,7 +4,7 @@ class CreateItemSubscriptions < ActiveRecord::Migration
       t.integer :item_id
       t.integer :user_id
       t.string :service_email
-      t.decimal :amount, :precision => 8, :scale => 2
+      t.decimal :amount, :precision => 8, :scale => 2, default: 0.0
 
       t.timestamps null: false
     end

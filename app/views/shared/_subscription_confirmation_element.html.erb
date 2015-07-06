@@ -1,21 +1,25 @@
 <div class="row" style="padding: 20px;">
   <div class="col-md-1">
-    <%= fa_icon("check", class: "fa-2x", style: "color: green; position: absolute; top: -15px; left: 5px;") if element.service_email.present? %>
-    <%= image_tag element.item.image, width: 80 %>
-    <p style="text-align:center; padding: 5px 0; width: 80px;" ><%= element.amount.to_i %>$</p>
+    <div style="padding-top:20px;">
+      <%= fa_icon("check", class: "fa-2x", style: "color: green; position: absolute; top: 5px; left: 5px;") if element.service_email.present? %>
+      <%= image_tag element.item.image, width: 80 %>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <p style="text-align:center; padding: 39px 0 0 0; width: 80px; font-size: 20px;" ><%= element.amount.to_i %>$</p>
   </div>
   <% if element.service_email.present? %>
-    <div class="col-md-10" style="padding-top: 10px;">
+    <div class="col-md-9" style="padding-top: 10px;">
       <p><h4>Nice!</h4></p>
       <p><h5>Your credit will be updated at the beginning of the next month.</h5></p>
     </div>
   <% else %>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <div class="row">
-        <div class="col-md-10"><p><h4>Oops, we haven't set up this account yet!</h4></p></div>
+        <div class="col-md-12 text-center"><p><h4>Oops, we haven't set up this account yet!</h4></p></div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
           <p>What's your email you signed up for this service? </p>
           <%= form_for element, method: :patch, remote: true do |f| %>
             <%= f.text_field :service_email, type: :email, required: true %>
@@ -24,8 +28,7 @@
         </div>
         <div class="col-md-1">or</div>
         <div class="col-md-5">
-          <p>If you don't have an account for this service yet do it here:</p>
-          <%= link_to 'Signup with our custom URL', element.item.custom_signup_url, target: "_blank", class: "" %>
+          <p>If you don't have an account for this service yet do it here: <%= link_to 'Signup with our custom URL', element.item.custom_signup_url, target: "_blank" %></p>
         </div>
       </div>
     </div>

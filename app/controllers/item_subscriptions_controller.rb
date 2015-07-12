@@ -16,6 +16,7 @@ class ItemSubscriptionsController < ApplicationController
     end
     @carts.each do |cart|
       @item_subscription = ItemSubscription.find_or_initialize_by(item_id: cart.item_id, user_id: current_user.id)
+      @item_subscription.amount = 0 if @item_subscription.amount.nil?
       @item_subscription.item_id |= cart.item_id
       @item_subscription.user_id |= current_user.id
       @item_subscription.amount += cart.amount

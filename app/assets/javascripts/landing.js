@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require vanilla-form
 //= require jquery-1.11.1.min
 //= require jquery-ui
-//= require vanilla-form
 //= require bootstrap.min
 //= require jquery.mb.YTPlayer
 //= require isotope.pkgd.min

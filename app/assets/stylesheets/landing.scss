@@ -11,8 +11,16 @@
  * file per style scope.
  *
  *= require_self
+
  *= require bootstrap_landing
  *= require maincss
+ *= require jquery-ui
+ *= require animate
+
+ *= require owl.carousel
+ *= require jquery.fancybox
+ *= require owl.transitions
+
  *= require vanilla-form
  */
 
@@ -22,15 +30,7 @@
 @import "font-awesome";
 @import "simple-line-icons.css";
 
-/* Basic css */
-@import "jquery-ui.css";
-@import "animate.css";
 
-/* Additional css */
-
-@import "owl.carousel.css";
-@import "jquery.fancybox.css";
-@import "owl.transitions.css";
 
 
 

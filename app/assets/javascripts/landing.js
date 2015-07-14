@@ -10,8 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap
-//= require rails.validations
+//= require jquery-1.11.1.min
+//= require jquery-ui
+//= require vanilla-form
+//= require bootstrap.min
+//= require jquery.mb.YTPlayer
+//= require isotope.pkgd.min
+//= require owl.carousel.min
+//= require jquery.scrollTo.min
+//= require jquery.ui.effect.min
+//= require modernizr
+//= require jquery.waypoints.min
+//= require fancybox/jquery.fancybox
+//= require wow.min
+//= require jquery.easypiechart.min
+//= require TweenMax.min
+//= require custom

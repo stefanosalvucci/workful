@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+
+  layout "landing", only: [:landing]
+  skip_before_filter :authenticate_user!, only: :landing
+
   def index
   end
 
@@ -15,5 +19,8 @@ class PagesController < ApplicationController
       @total_discount = @total_discount + cart.item.amount_save
     end
     @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
+  end
+
+  def landing
   end
 end

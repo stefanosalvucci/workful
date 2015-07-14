@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   end
 
   # You can have the root of your site routed with "root"
-  root 'pages#dashboard'
+  root 'pages#landing'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

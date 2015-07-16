@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+    var myHeaderForm = new VanillaForm(document.getElementById("main-form"));
+    var myFooterForm = new VanillaForm(document.getElementById("footer-form"));
+});
+
+new WOW().init();
+
 $(document).ready(function() {
     // Preloader
     $(window).on('load', function() {
@@ -214,6 +222,21 @@ $(document).ready(function() {
         } else {
             $('nav').removeClass("navbar-alt")
         }
+
+        if ($(window).scrollTop() > $("#programs").position().top - $(window).height() - 00) {
+            $('.program-icon .chart').easyPieChart({
+                animate: 2000,
+                'size': '130',
+                'lineWidth': '10',
+                trackColor: '#f0f0f0 ',
+                scaleColor: false,
+                barColor: "#a7cc3f",
+                onStep: function(from, to, percent) {
+                    this.el.children[0].innerHTML = Math.round(percent)+ '%';
+                }
+            });
+        }
+
     });
     if ($(window).width() < 769) {
         $('#nav').removeClass('navbar-default').addClass('navbar-inverse');
@@ -670,15 +693,4 @@ $(document).ready(function() {
         },
         offset: "100%"
     });
-
-
-
-
-
-
-
-
-
-
-
 }); // Document ready

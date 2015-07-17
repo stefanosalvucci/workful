@@ -1,6 +1,6 @@
 class InvitesController < ApplicationController
   layout "frontoffice", only: [:new, :share_invite_url_frontoffice]
-  skip_before_filter :authenticate_user!, only: [:activation, :create_account]
+  skip_before_filter :authenticate_user!, only: [:activation, :create_account, :request_demo]
   def index
   end
 

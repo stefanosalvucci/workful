@@ -183,29 +183,7 @@
                         <p class="large">Startups and medium companies usually have a small HR department that is very busy with many tasks. Offer additional benefits can be challenging, time consuming and is not guaranteed to please everyone. With Workful, companies can outsource the process of making deals with providers, managing credits and reconciling multiple services. We take care of everything and employees get what they need.</p>
                     </div>
                 </div><!--row-->
-
-                <div id="request"class="row" style="background-color: #F1F1F1; margin-top:40px;">
-                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center wrap-ask" style="margin-top:40px;">
-                        <h3>Increase productivity, happiness and retention.</h3>
-                        <div class="form-container">
-        <!-- Vanilla Form markup starts here -->
-        <form id="main-form" action="php/contact.php" method="post" class="vanilla-form" novalidate>
-            <!-- Left column -->
-            <div class="column-50">
-                <input type="text" name="name" placeholder="Full name" required="required">
-                <input type="email" name="email" placeholder="Work e-mail address" required="required">
-            </div><!--
-                Right column
-            --><div class="column-50">
-            <input type="text" name="company" placeholder="Company name" required="required">
-            <input type="submit" value="Request a demo" data-error="Fix errors" data-processing="Sending..." data-success="Thank you!">
-            </div>
-            <footer class="notification-box"></footer>
-        </form>
-        <!-- Vanilla Form markup ends here -->
-    </div>
-                    </div>
-                </div>
+                <%= render partial: 'shared/request_demo', locals: {form_id: 'main-form'} %>
             </div><!--container-->
         </section>
 
@@ -350,28 +328,7 @@
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
         <section class="gallery" id="gallery">
             <div class="container" style="padding-top:60px;">
-              <div class="row" style="background-color: #F1F1F1; margin-bottom:40px;">
-                    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center wrap-ask" style="margin-top:40px;">
-                        <h3>Increase productivity, happiness and retention.</h3>
-                        <div class="form-container">
-        <!-- Vanilla Form markup starts here -->
-        <form id="footer-form" action="php/contact.php" method="post" class="vanilla-form" novalidate>
-            <!-- Left column -->
-            <div class="column-50">
-                <input type="text" name="name" placeholder="Full name" required="required">
-                <input type="email" name="email" placeholder="Work e-mail address" required="required">
-            </div><!--
-                Right column
-            --><div class="column-50">
-            <input type="text" name="company" placeholder="Company name" required="required">
-            <input type="submit" value="Request a demo" data-error="Fix errors" data-processing="Sending..." data-success="Thank you!">
-            </div>
-            <footer class="notification-box"></footer>
-        </form>
-        <!-- Vanilla Form markup ends here -->
-    </div>
-                    </div>
-                </div>
+                <%= render partial: 'shared/request_demo', locals: {form_id: 'footer-form'} %>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                       <img class="img-responsive" style=" width:250px; display:block; margin:0 auto 20px" src="assets/logo_color.svg" />

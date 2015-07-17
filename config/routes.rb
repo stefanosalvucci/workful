@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get 'share', to: 'invites#share_invite_url_frontoffice'
       post 'create_account'
       post 'wizard_invite_done'
+      post 'request_demo'
     end
   end
   resources :companies, only: [:update] do

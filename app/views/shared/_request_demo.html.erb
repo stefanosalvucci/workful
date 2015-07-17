@@ -1,0 +1,20 @@
+<div id="request"class="row" style="background-color: #F1F1F1; margin-top:40px;">
+    <div class="col-md-10 col-md-offset-1 col-sm-12 text-center wrap-ask" style="margin-top:40px;">
+        <h3>Increase productivity, happiness and retention.</h3>
+        <div class="form-container">
+            <%= form_tag request_demo_invites_path, format: :json, method: :post, class: 'vanilla-form', id: form_id do %>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <div class="column-50">
+                    <input type="text" name="name" placeholder="Full name" required="required">
+                    <input type="email" name="email" placeholder="Work e-mail address" required="required">
+                </div><!--
+                    Right column
+                --><div class="column-50">
+                    <input type="text" name="company" placeholder="Company name" required="required">
+                    <input type="submit" value="Request a demo" data-error="Fix errors" data-processing="Sending..." data-success="Thank you!">
+                </div>
+                <footer class="notification-box"></footer>
+            <% end%>
+        </div>
+    </div>
+</div>

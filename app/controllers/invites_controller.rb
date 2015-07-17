@@ -8,6 +8,19 @@ class InvitesController < ApplicationController
     @company = current_user.company
   end
 
+  def request_demo
+    req = Request.new(
+      fullname: params['name'],
+      email: params['email'],
+      company_name: params['company']
+    )
+    if req.save
+      render json: {result: 'OK'}
+    else
+      render json: {result: 'SEND_ERROR'}
+    end
+  end
+
   def activation
     @company = Company.find_by_invite_code(params[:invite_code])
     redirect_to root_url unless @company.present? || current_user

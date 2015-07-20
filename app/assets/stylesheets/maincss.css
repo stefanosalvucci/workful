@@ -88,7 +88,7 @@ h6 {
     margin: 0;
 }
 h1{
-    font-weight: 300;
+    font-weight: 100;
     margin-bottom:20px;
 }
 
@@ -101,7 +101,7 @@ h4 {
 }
 h5,
 h6 {
-    font-weight: 600;
+    font-weight: 400;
 }
 h2 {
     margin-bottom: 0.6em;
@@ -122,6 +122,7 @@ p.large {
     font-size: 128%;
     line-height: 1.5;
     margin: 0 0 1.8em;
+    font-weight: 300
 }
 
 p.subtitle {
@@ -129,7 +130,7 @@ p.subtitle {
     line-height: 1.5;
     margin: 0 0 2em;
 	font-size:22px;
-	font-weight:700;
+	font-weight:300;
 }
 
 p.subhead {
@@ -806,7 +807,8 @@ label {
     float: left;
 }
 .navbar-nav {
-    font-weight: 700;
+    font-weight: 100px;
+    font-size: 15px;
 }
 .navbar-nav  >  li {
     text-align: center;
@@ -1189,6 +1191,7 @@ label {
 .copyright p,
 .copyright ul {
     margin-bottom: 0;
+    font-weight: 300;
 }
 .copyright ul li {
     margin-left: 1em;
@@ -2311,7 +2314,8 @@ section.divider.striped-icon {
     font-size: 20px;
     line-height: 1.5;
     margin-bottom: 0;
-	font-style:italic;
+    font-style:italic;
+    font-weight: 300;
 }
 .twitter article p a {
     color: white;
@@ -2728,6 +2732,7 @@ section.team {
     line-height: 29px;
     margin-bottom: 15px;
     min-height: 58px;
+    font-weight: 300;
 }
 .wrap-programs .program-item .program-icon {
     position: relative;
@@ -6009,7 +6014,7 @@ text[text-anchor="end"] {
 		margin:25px 0 0;
 		color:#000000;
 		font-size:18px;
-		font-weight:bold;
+		font-weight:400;
 	}
 	.box-colored.box1 {
 	    background-color: #ffffff;
@@ -6321,6 +6326,3 @@ text[text-anchor="end"] {
 		    transform: translateY(-50%);
 		}
 	}
-	
-	
-	

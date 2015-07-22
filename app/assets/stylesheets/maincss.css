@@ -1296,11 +1296,11 @@ section.divider.striped-icon {
     z-index: 1;
 }
 .home-header {
-    background-image: url(../assets/hero_family.jpg);
+    background-image: url(../assets/runner.jpg);
     background-position: center top, center top;
     background-repeat: no-repeat;
     background-size: cover, cover;
-    padding-top: 180px;
+    padding-top: 140px;
     min-height: 700px;
 }
 .home-header a.btn-primary {

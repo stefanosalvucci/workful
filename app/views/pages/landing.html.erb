@@ -18,7 +18,7 @@
                     <a class="toggle-button visible-xs-block" data-toggle="collapse" data-target="#navbar-collapse">
                         <i class="fa fa-navicon"></i>
                     </a>
-                    <a class="navbar-brand scroll" href="/">
+                    <a class="navbar-brand scroll" href="#anchor-top">
                         <img class="normal-logo hidden-xs"  src="assets/logo.svg" width="144" height="44" alt="logo"/>
                         <img class="inverse-logo hidden-xs" src="assets/logo-w.png" alt="logo"/>
                         <img class="visible-xs-block" src="assets/logo.svg" width="144" height="44" alt="logo"/>
@@ -26,10 +26,10 @@
                 <div class="navbar-collapse collapse floated" id="navbar-collapse">
                         <ul class="nav navbar-nav navbar-with-inside clearfix navbar-right with-border">
 
-                            <li><a href="#whatwedo">What we do</a></li>
-                            <li><a href="#gallery">Contact</a></li>
+                            <li><a href="#anchor-whatwedo">What we do</a></li>
+                            <li><a href="#anchor-gallery">Contact</a></li>
                             <li><a href="http://blog.workful.co" target="_blank">Blog</a></li>
-                            <li><a style="color:#a7cc3f; font-weight:400; text-transform:uppercase;" href="#request">Request a demo</a></li>
+                            <li><a style="color:#a7cc3f; font-weight:400; text-transform:uppercase;" href="#anchor-request">Request a demo</a></li>
 
                         </ul>
                     </div>
@@ -40,6 +40,7 @@
 
        <!-- Home - 2  - Header -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <a class="anchor" id="anchor-top"></a>
         <section class="home-header dark">
             <div class="container"> 
                 <div class="row">
@@ -50,7 +51,14 @@
 <!--                             <div class="col-md-4" style=" margin-bottom:18px;">
                                 <a class="btn btn-info" href="#programs">Learn more</a></div> -->
                             <div class="col-md-12 text-center">
-                                <a class="btn btn-primary" href="#request">REQUEST A DEMO</a>
+                                <a class="btn btn-primary" href="#anchor-request">REQUEST A DEMO</a>
+                            </div>
+                        </div>
+                        <div class="row arrow-row">
+                            <div class="col-sm-12">
+                                <a class="arrow-wrap" href="#anchor-what-employees-say">
+                                    <span class="arrow"></span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -65,7 +73,7 @@
             <!--<a class="striped-icon divider scroll" href="#programs">
                 <i class="fa fa-chevron-down"></i>
             </a>-->
-
+            <a class="anchor" id="anchor-what-employees-say"></a>
             <div class="container">
               <!-- section header -->
                 <div class="row">
@@ -102,7 +110,7 @@
 
         <!-- Service - Navigation -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-        <span id="whatwedo" class="anchor"></span>
+        <span id="anchor-whatwedo" class="anchor"></span>
         <section class="wrap-service-nav">
 
            <!-- <a class="striped-icon divider scroll" href="#whatwedo">
@@ -326,7 +334,7 @@
         <footer>
         <!-- Home - Gallery -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-        <span class="anchor" id="gallery"></span>
+        <span class="anchor" id="anchor-gallery"></span>
         <section class="gallery">
             <div class="container">
                 <%= render partial: 'shared/request_demo', locals: {form_id: 'footer-form'} %>

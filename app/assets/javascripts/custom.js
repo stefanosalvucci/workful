@@ -15,6 +15,14 @@ $(document).ready(function() {
         $preloader.delay(350).fadeOut(800);
     });
 
+
+    $('a').click(function(){
+        $('html, body').animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top
+        }, 700);
+        return false;
+    });
+
     // Hovers in dream team for touch screen
     if (Modernizr.touch) {
         $(document).on('touchend', '.wrap-dream-team .list-dream-team .team-item', function() {
@@ -217,6 +225,30 @@ $(document).ready(function() {
     /* <!-- ============ Herader Animation =========== --> */
     /* <!-- =============================================== -->  */
     $(window).scroll(function() {
+
+        var topWindow = $(window).scrollTop();
+        var topWindow = topWindow * 1.5;
+        var windowHeight = $(window).height();
+        var position = topWindow / windowHeight;
+        position = 1 - position;
+        $('.arrow-wrap').css('opacity', position);
+
+        $(function() {
+          $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+              if (target.length) {
+                $('html,body').animate({
+                  scrollTop: target.offset().top
+                }, 1000);
+                return false;
+              }
+            }
+          });
+        });
+
+
         if ($(this).scrollTop() > 15) {
             $('nav').addClass("navbar-alt")
         } else {
@@ -692,13 +724,6 @@ $(document).ready(function() {
             this.destroy();
         },
         offset: "100%"
-    });
-
-    $('a').click(function(){
-        $('html, body').animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top
-        }, 500);
-        return false;
     });
 
 }); // Document ready

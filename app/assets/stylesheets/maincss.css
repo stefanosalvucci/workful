@@ -6225,6 +6225,7 @@ text[text-anchor="end"] {
 	    margin-bottom:25px;
 	    text-align: center;
 	    opacity: 0;
+               cursor: default;
 	    /*-webkit-transform: scale(10);
 	    -ms-transform: scale(10);
 	    transform: scale(10);

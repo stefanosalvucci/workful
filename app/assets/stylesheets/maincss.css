@@ -1308,6 +1308,16 @@ section.divider.striped-icon {
 .home-header a.btn-primary {
     margin-bottom: 18px;
 }
+
+.home-header .main-title {
+    font-weight: 600;
+}
+
+.home-header .subtitle {
+    color: rgb(72, 72, 72);
+    font-weight: 400;
+}
+
 .about-product {
     margin-top: -100px;
     /*background: #fff;*/

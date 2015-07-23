@@ -1309,6 +1309,10 @@ section.divider.striped-icon {
     margin-bottom: 18px;
 }
 
+.home-header .main-box {
+    margin-top: 50px;
+}
+
 .home-header .main-title {
     font-weight: 600;
 }

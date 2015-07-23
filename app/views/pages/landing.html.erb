@@ -27,6 +27,7 @@
                         <ul class="nav navbar-nav navbar-with-inside clearfix navbar-right with-border">
 
                             <li><a href="#anchor-whatwedo">What we do</a></li>
+                            <li><a href="#anchor-howitworks">How it works</a></li>
                             <li><a style="color:#a7cc3f; font-weight:400; text-transform:uppercase;" href="#anchor-request">Request a demo</a></li>
 
                         </ul>
@@ -42,7 +43,7 @@
         <section class="home-header dark">
             <div class="container"> 
                 <div class="row">
-                    <div class="col-sm-12 col-xs-12">
+                    <div class="col-sm-12 col-xs-12 main-box">
                         <h1 class="text-center main-title">Customized perks for everyone</h1>
                         <p class="subtitle text-center subtitle">BOOST MORALE AND ATTRACT MORE TALENT</p>
                         <div class="row">
@@ -57,47 +58,6 @@
             </div><!--container-->
         </section>
 
-          <!-- About -  Services -->
-        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
-        <section class="wrap-programs" id="programs" >
-
-            <!--<a class="striped-icon divider scroll" href="#programs">
-                <i class="fa fa-chevron-down"></i>
-            </a>-->
-            <a class="anchor" id="anchor-what-employees-say"></a>
-            <div class="container">
-              <!-- section header -->
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <header class="section-header">
-                            <h2>What do employees say about benefits package?</h2>
-                        </header>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 clearfix col-sm-6 col-xs-12 program-item">
-                        <div class="program-icon">
-                            <div class="chart wow fadeIn" data-percent="78"><p>78%</p></div>
-                        </div>
-                        <div class="program-text">of employees say benefits are extremely important when deciding to <b>accept or reject a job offer</b></div>
-                    </div>
-
-                    <div class="col-md-4 clearfix col-sm-6 col-xs-12 program-item">
-                        <div class="program-icon">
-                            <div class="chart wow" data-percent="80"><p>80%</p></div>
-                        </div>
-                        <div class="program-text">of employees would <b>value benefits customized</b> to individual circumstances and age</div>
-                    </div>
-
-                    <div class="col-md-4 clearfix col-sm-6 col-xs-12 program-item">
-                        <div class="program-icon">
-                            <div class="chart wow" data-percent="59"><p>59%</p></div>
-                        </div>
-                        <div class="program-text">are very interested in a <b>greater variety</b> of benefits to choose from</div>
-                    </div>
-                </div><!--row-->
-            </div><!--container-->
-        </section>
 
         <!-- Service - Navigation -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
@@ -114,7 +74,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <header class="section-header" >
                             <h2>What We do</h2>
-                        </header> 
+                        </header>
                     </div>
                 </div>
             </div>
@@ -193,6 +153,7 @@
             <!--<a class="striped-icon divider scroll" href="#section-steps">
                 <i class="fa fa-chevron-down"></i>
             </a>-->
+            <span class="anchor" id="anchor-howitworks"></span>
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -294,6 +255,54 @@
             </div>
         </section>
 
+
+
+
+          <!-- About -  Services -->
+        <!-- ++++++++++++++++++++++++++++++++++++++++ -->
+        <section class="wrap-programs hidden-xs" id="programs" >
+
+            <!--<a class="striped-icon divider scroll" href="#programs">
+                <i class="fa fa-chevron-down"></i>
+            </a>-->
+            <a class="anchor" id="anchor-what-employees-say"></a>
+            <div class="container">
+              <!-- section header -->
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <header class="section-header">
+                            <h2>SOME DATA</h2>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 clearfix col-sm-6 col-xs-12 program-item">
+                        <div class="program-icon">
+                            <div class="chart wow fadeIn" data-percent="78"><p>78%</p></div>
+                        </div>
+                        <div class="program-text">of employees say benefits are extremely important when deciding to <b>accept or reject a job offer</b></div>
+                    </div>
+
+                    <div class="col-md-4 clearfix col-sm-6 col-xs-12 program-item">
+                        <div class="program-icon">
+                            <div class="chart wow" data-percent="50"><p>1/2</p></div>
+                        </div>
+                        <div class="program-text">More than 50% are <b>not satisfied</b> with the benefits provided by their company</div>
+                    </div>
+
+                    <div class="col-md-4 clearfix col-sm-6 col-xs-12 program-item">
+                        <div class="program-icon">
+                            <div class="chart wow" data-percent="59"><p>59%</p></div>
+                        </div>
+                        <div class="program-text">are very interested in a <b>greater variety</b> of benefits to choose from</div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </section>
+
+
+
+
         <!-- Home - Twitter -->
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
         <section class="twitter dark parallax-section-3">
@@ -327,6 +336,7 @@
         <!-- ++++++++++++++++++++++++++++++++++++++++ -->
         <section class="gallery">
             <div class="container">
+                <a class="anchor" id="anchor-request"></a>
                 <%= render partial: 'shared/request_demo', locals: {form_id: 'footer-form'} %>
                 <span class="anchor" id="anchor-contact"></span>
                 <div class="row">

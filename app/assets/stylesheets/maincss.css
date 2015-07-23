@@ -1071,6 +1071,11 @@ label {
     position: absolute;
     z-index: -1;
 }
+
+.with-margin{
+    margin: 10px 0px !important;
+}
+
 .contacts {
     border-top: 1px solid #e8e9ed;
     background-color: #f7f7fa;
@@ -1186,7 +1191,7 @@ label {
 .copyright {
     border-top: 1px solid #e8e9ed;
     background-color: #f2f2f5;
-    padding: 40px 0;
+    padding: 10px 0;
 }
 .copyright p,
 .copyright ul {
@@ -1729,7 +1734,6 @@ section.divider.striped-icon {
 }
 .gallery {
     width: 100%;
-    margin-bottom: 60px;
     border-top: 1px solid #e8e9ed;
 }
 .gallery .gallery-controls {

@@ -6,6 +6,12 @@
   <%= javascript_include_tag 'landing', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag %>
+
+  <meta property="og:url"content="http://workful.co" />
+  <meta property="og:title"content="Workful - Customized perks for everyone" />
+  <meta property="og:description" content="We enable growing companies to increase the quality and variety of perks to offer to their employees, with no effort and no additional costs. We only partner with the best provider in each category, like big companies do." />
+  <meta property="og:image" content="<%= asset_url('images/logo_color_big') %>" />
+
 </head>
 <body class="<%= body_class %>">
   <%= yield %>

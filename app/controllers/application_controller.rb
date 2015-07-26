@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path
     end
   end
+
+  def after_sign_in_path_for(resource)
+    pages_dashboard_path
+  end
+
 end

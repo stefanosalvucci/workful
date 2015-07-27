@@ -1,4 +1,4 @@
-<h2 style="text-align: center;">Cart</h2>
+<h2 style="text-align: center;">Your perks</h2>
 <% if current_user.monthly_budget_left == 0 %>
   <div class="checkout">
     <div class="row">
@@ -71,6 +71,8 @@
     <%= link_to 'Not enough credit :(', create_subscriptions_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
   <% elsif @carts.empty? %>
     <%= link_to 'Empty cart', pre_checkout_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
+  <% elsif current_user.monthly_budget_left > @total_checkout %>
+    <%= link_to "#{(current_user.monthly_budget_left - @total_checkout).to_i}$ still to add", pre_checkout_item_subscriptions_path, class: "btn btn-success full-width-u disabled" %>
   <% else %>
     <%= link_to 'Checkout', pre_checkout_item_subscriptions_path, class: "btn btn-success full-width-u" %>
   <% end %>

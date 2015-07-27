@@ -5,9 +5,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
 
-
   def benefits_left_to_chose
     ((current_user.monthly_budget_left - current_user.carts.sum(:amount)) / 25).to_i
+  end
+
+  def after_sign_in_path_for(resource)
+    pages_dashboard_path
   end
 
   protected
@@ -17,10 +20,6 @@ class ApplicationController < ActionController::Base
     else
       redirect_to new_user_session_path
     end
-  end
-
-  def after_sign_in_path_for(resource)
-    pages_dashboard_path
   end
 
 end

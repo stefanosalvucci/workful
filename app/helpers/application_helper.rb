@@ -12,4 +12,8 @@ module ApplicationHelper
   def display_next_month
     (Date.today + 1.month).strftime("%b %Y")
   end
+
+  def display_full_next_month
+    (Date.today + 1.month).strftime("%B")
+  end
 end

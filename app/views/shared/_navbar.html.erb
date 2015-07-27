@@ -17,8 +17,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Dashboard</a></li>
-        <li style="margin-right: 100px;"><a href="/subscriptions"><%= display_next_month %> subscriptions</a></li>
-        <li class="monthly-budget-left"><b><%= display_next_month %> budget available:</b> $<%= current_user.monthly_budget_left.to_i %></li>
+        <li style="margin-right: 100px;"><a href="/subscriptions"><%= display_full_next_month %> perks</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= avatar(current_user) %> <%= current_user.full_name %> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

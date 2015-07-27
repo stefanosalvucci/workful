@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+
+  #yc_route
+  get '/yc_fellowship', to: 'pages#yc_fellowship'
+
   resources :invites, only: [:new, :index, :create, :destroy] do
     collection do
       get 'activation/:invite_code', to: 'invites#activation', as: :activation

@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def custom_dashboard_path
     return '/yc_fellowship' if current_user.email == 'hello@ycombinator.com'
-    pages_dashboard_path
+    dashboard_path
   end
 
 end

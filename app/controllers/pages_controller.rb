@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   layout "landing", only: [:landing]
   skip_before_filter :authenticate_user!, only: [:landing, :dashboard]
-  before_filter :custom_authenticate_user!
+  before_filter :custom_authenticate_user!, only: [:dashboard]
 
   def index
   end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   #yc_route
   get '/yc_fellowship', to: 'pages#dashboard'
+  get '/dashboard', to: 'pages#dashboard'
 
   resources :invites, only: [:new, :index, :create, :destroy] do
     collection do

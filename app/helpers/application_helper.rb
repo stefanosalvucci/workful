@@ -16,4 +16,10 @@ module ApplicationHelper
   def display_full_next_month
     (Date.today + 1.month).strftime("%B")
   end
+
+  def custom_dashboard_path
+    return '/yc_fellowship' if current_user.email == 'hello@ycombinator.com'
+    pages_dashboard_path
+  end
+
 end

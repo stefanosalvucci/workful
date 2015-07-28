@@ -2,9 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Workful</h1>
-        <h5>Innovative solutions for everyday needs</h5>
-        <h4><%= current_user.first_name.capitalize%>, enjoy the following perks you chose for <%= display_full_next_month %>!</h4>
+        <h3><%= current_user.first_name.capitalize%>, enjoy the following perks you chose for <%= display_full_next_month %>!</h3>
       </div>
     </div>
     <% @active_subscriptions.each do |subscription| %>

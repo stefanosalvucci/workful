@@ -26,3 +26,4 @@
 //= require jquery.easypiechart.min
 //= require TweenMax.min
 //= require custom
+//= require google_analytics

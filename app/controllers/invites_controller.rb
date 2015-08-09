@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
       company_name: params['company']
     )
     if req.save
-      ApplicationMailer.request_demo_confirmation(req.email).deliver_now
+      #ApplicationMailer.request_demo_confirmation(req.email).deliver_now
       render json: {result: 'OK'}
     else
       render json: {result: 'SEND_ERROR'}

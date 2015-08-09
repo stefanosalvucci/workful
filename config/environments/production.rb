@@ -86,7 +86,7 @@ Rails.application.configure do
     domain:               'gmail.com',
     user_name:            'workfuldevelopment',
     password:             'supertester1',
-    authentication:       'plain',
+    authentication:       :login,
     enable_starttls_auto: true
   }
   config.paperclip_defaults = {

@@ -11,7 +11,9 @@ gem 'devise'
 gem 'cancancan'
 gem 'activeadmin', github: 'activeadmin'
 gem 'paperclip'
-gem 'delayed_job_active_record'
+
+gem 'resque'
+gem 'resque-scheduler'
 
 gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "4-2-stable"
 
@@ -49,6 +51,8 @@ gem "non-stupid-digest-assets"
 
 gem 'exception_notification'
 
+gem 'puma'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -72,6 +76,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'capybara'
 
+  gem 'dotenv-rails'
 
   gem 'pry'
 end

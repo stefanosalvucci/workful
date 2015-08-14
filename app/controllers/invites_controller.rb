@@ -1,6 +1,10 @@
 class InvitesController < ApplicationController
+
+  EMAILS_TO_NOTIFY = ['stefano@workful.co', 'elena@workful.co']
+
   layout "frontoffice", only: [:new, :share_invite_url_frontoffice]
   skip_before_filter :authenticate_user!, only: [:activation, :create_account, :request_demo]
+
   def index
   end
 
@@ -15,6 +19,9 @@ class InvitesController < ApplicationController
       company_name: params['company']
     )
     if req.save
+      EMAILS_TO_NOTIFY.each do |mail|
+        ApplicationMailer.notify_demo_request(mail, req).deliver_later
+      end
       ApplicationMailer.request_demo_confirmation(req.email).deliver_later
       render json: {result: 'OK'}
     else

@@ -1,2 +1,4 @@
 pg: postgres -D /usr/local/var/postgres
+redis: redis-server
+worker: bundle exec rake environment resque:work QUEUE=*
 web1: rails s

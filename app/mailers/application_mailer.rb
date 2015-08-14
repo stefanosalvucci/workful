@@ -7,4 +7,10 @@ class ApplicationMailer < ActionMailer::Base
     mail(subject: subject, to: email)
   end
 
+  def notify_demo_request email, request
+    @request = request
+    subject = "Someone is interested in workful!"
+    mail(subject: subject, to: email)
+  end
+
 end

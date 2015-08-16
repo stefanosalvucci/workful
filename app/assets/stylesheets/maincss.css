@@ -1327,15 +1327,6 @@ section.divider.striped-icon {
     font-weight: 600;
 }
 
-.vertical-align {
-    display: flex;
-    align-items: center;
-}
-
-.p-no-margin{
-    margin: 0 !important;
-}
-
 .about-product {
     margin-top: -100px;
     /*background: #fff;*/

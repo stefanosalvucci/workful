@@ -22,7 +22,8 @@ class InvitesController < ApplicationController
       EMAILS_TO_NOTIFY.each do |mail|
         ApplicationMailer.notify_demo_request(mail, req).deliver_later
       end
-      ApplicationMailer.request_demo_confirmation(req.email).deliver_later
+      # as now we will send this email
+      #ApplicationMailer.request_demo_confirmation(req.email).deliver_later
       render json: {result: 'OK'}
     else
       render json: {result: 'SEND_ERROR'}

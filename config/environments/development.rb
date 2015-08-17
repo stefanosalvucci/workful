@@ -49,8 +49,6 @@ ActionMailer::Base.smtp_settings = {
   :user_name            => ENV['SMTP_USERNAME'],
   :password             => ENV['SMTP_PASSWORD'],
   :authentication       => :plain,
-  :ssl                       => true,
-  :tls                        => true,
   :enable_starttls_auto => true
 }
   #config.paperclip_defaults = {

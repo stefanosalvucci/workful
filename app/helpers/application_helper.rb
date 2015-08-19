@@ -14,14 +14,14 @@ module ApplicationHelper
   end
 
   def credit_left
-    monthly_budget - credit_used
+    monthly_credit - credit_used
   end
 
   def credit_used
     ItemSubscription.where(user: current_user).sum(:amount) if current_user
   end
 
-  def monthly_budget
+  def monthly_credit
     current_user && current_user.monthly_budget
   end
 

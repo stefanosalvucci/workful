@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
 
   layout "landing", only: [:landing]
-  layout "application", only: [:catalogue]
   skip_before_filter :authenticate_user!, only: [:landing, :dashboard]
   before_filter :custom_authenticate_user!, only: [:dashboard]
 

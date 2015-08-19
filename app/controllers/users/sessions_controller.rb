@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
   skip_before_filter :authenticate_user!
-  layout "frontoffice"
+  layout "authentication"
 # before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

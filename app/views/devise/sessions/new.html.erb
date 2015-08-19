@@ -1,4 +1,67 @@
-<div class="sessions-page">
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Workful</h3>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Welcome to Workful.</h1>
+            <p class="lead">Log in and start managing your perks.</p>
+            <div class="col-md-3 col-sm-4"></div>
+
+            <div class="col-md-6 col-sm-4">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                  <%= f.email_field :email, autofocus: true, placeholder: 'Your email', class: 'form-control' %>
+                </div>
+
+                <div class="field">
+                  <%= f.password_field :password, placeholder: 'Your password', autocomplete: "off", class: 'form-control' %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end -%>
+
+                <div class="actions">
+                  <%= f.submit "Log in", class: "btn btn-success btn-group-justified" %>
+                </div>
+              <% end %>
+
+              <%= render "devise/shared/links" %>
+            </div>
+
+          </div>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Workful Inc. Address and other useful information here.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})</script>
+
+
+
+
+<!-- <div class="sessions-page">
   <div class="container">
     <div class="box">
       <h2>Log in</h2>
@@ -30,3 +93,4 @@
     </div>
   </div>
 </div>
+ -->

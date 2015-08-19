@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #yc_route
   get '/yc_fellowship', to: 'pages#dashboard'
   get '/dashboard', to: 'pages#dashboard'
+  get '/catalogue', to: 'pages#catalogue'
 
   resources :invites, only: [:new, :index, :create, :destroy] do
     collection do
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'pages/index'
   get 'pages/dashboard'
+  get 'pages/catalogue'
 
   devise_for :users, path: 'account',
   path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' },

@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   layout "landing", only: [:landing]
+  layout "application", only: [:catalogue]
   skip_before_filter :authenticate_user!, only: [:landing, :dashboard]
   before_filter :custom_authenticate_user!, only: [:dashboard]
 
@@ -25,6 +26,10 @@ class PagesController < ApplicationController
       @total_discount = @total_discount + cart.item.amount_save
     end
     @total_checkout_credit = @total_checkout + (@total_checkout*@total_discount/100)
+  end
+
+  def catalogue
+    @available_perks = Item.all
   end
 
   def landing

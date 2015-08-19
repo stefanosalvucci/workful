@@ -1,13 +1,25 @@
-<div class="subscriptions-confirmation" id="subscriptions-confirmation">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h3><%= current_user.first_name.capitalize%>, enjoy the following perks you chose for <%= display_full_next_month %>!</h3>
-      </div>
-    </div>
-    <% @active_subscriptions.each do |subscription| %>
-      <%= render partial: 'shared/subscription_confirmation_element', locals: {element: subscription}%>
+<%= render partial: 'shared/info_bar' %>
+<%= render partial: 'shared/headline' %>
+
+<div class="container" style="padding-top:30px;">
+  <div class="row" style="padding-top:20px;" >
+    <% @active_subscriptions.each do |perk| %>
+      <%= render partial: 'shared/my_perks_perk', locals: {perk: perk} %>
     <% end %>
+
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="thumbnail">
+        <%= image_tag image_path('perk-logo.png') %>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+          <div class="btn-group" role="group">
+            <a href="catalogue.html" class="btn btn-primary" role="button">Add perk</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  $(function () { $('[data-toggle="tooltip"]').tooltip()})
+</script>

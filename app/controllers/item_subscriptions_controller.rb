@@ -1,4 +1,6 @@
 class ItemSubscriptionsController < ApplicationController
+  layout 'application', only: [:index]
+
   def index
     @active_subscriptions = current_user.item_subscriptions.order(:id)
   end

@@ -1,0 +1,86 @@
+<%= render partial: 'shared/info_bar' %>
+<%= render partial: 'shared/headline' %>
+
+<div class="container" style="padding-top:30px;">
+
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#">All perks</a></li>
+    <li role="presentation"><a href="#cat1">Category one</a></li>
+    <li role="presentation"><a href="#cat2">Category two</a></li>
+    <li role="presentation"><a href="#cat3">Category three</a></li>
+    <li role="presentation"><a href="#cat4">Category four</a></li>
+    <li role="presentation"><a href="#cat5">Category five</a></li>
+  </ul>
+
+  <div class="row" style="padding-top:20px;" >
+    <% @available_perks.each do |perk| %>
+      <%= render partial: 'shared/catalogue_perk', locals: {perk: perk} %>
+    <% end %>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="thumbnail">
+      <img src="img/perk-logo.png" alt="...">
+      <div class="caption">
+        <h3>Suggest perk</h3>
+        <p>What kind of service would you like to find on Workful?</p>
+        <p><input type="text" class="form-control" placeholder="What about...?" aria-describedby="basic-addon1"></p>
+        <p class=" text-center"><button type="button" class="btn btn-primary btn-group-justified">Suggest perk</button></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--
+********************MODAL ADD-PERK*******************
+-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-title" id="myModalLabel" style="text-align:center;">Add <strong>Company Name</strong> to your perks</h3>
+        <p class="lead text-center">Set your monthly budget:</p>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4"></div>
+          <div class="col-lg-4 col-md-4 col-sm-4" style="margin-top:20px; margin-bottom:20px;">
+            <div class="form-group pull-left">
+              <select class="form-control" id="sel1">
+                <option>25$</option>
+                <option>50$</option>
+                <option>75$</option>
+                <option>100$</option>
+                <option>125$</option>
+                <option>150$</option>
+                <option>175$</option>
+                <option>200$</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-success pull-right" data-dismiss="modal" aria-label="Close">Confirm</button>     
+          </div><!-- /.col-lg-6 -->
+          <div class="col-lg-4 col-md-4 col-sm-4"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="pull-left" style="display:block; width:50%; padding:15px;">
+          <h4 class="pull-left">Credit available:</h4>
+          <h4 class="pull-right">75$</h4>
+        </div>
+        <div class="pull-right" style="display:block; width:50%; padding:15px; border-left:#e5e5e5 solid 1px;">
+          <h4 class="pull-left">Credit used:</h4>
+          <h4 class="pull-right">125$</h4>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.row -->
+</div>
+
+
+
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })</script>

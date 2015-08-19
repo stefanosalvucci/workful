@@ -4,7 +4,7 @@
       <div class="panel panel-default">
         <div class="panel-body" data-toggle="tooltip" data-placement="bottom" title="Your used credit for this month">
           <h4 class="pull-left">Credit used:</h4>
-          <h4 class="pull-right text-info">125$</h4>
+          <h4 class="pull-right text-info"><%= credit_used %>$</h4>
         </div>
       </div>
     </div>
@@ -12,7 +12,7 @@
       <div class="panel panel-default">
         <div class="panel-body" data-toggle="tooltip" data-placement="bottom" title="You must spend all your budget each month. This is what remains actually.">
           <h4 class="pull-left">Credit available:</h4>
-          <h4 class="pull-right text-success">75$</h4>
+          <h4 class="pull-right text-success"><%= credit_left %>$</h4>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
       <div class="panel panel-default">
         <div class="panel-body" data-toggle="tooltip" data-placement="bottom" title="Time remaining to set your entire badget, otherwise your perks will not be active">
           <h4 class="pull-left">Days left:</h4>
-          <h4 class="pull-right text-danger">7</h4>
+          <h4 class="pull-right text-danger"><%= days_left %></h4>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
       <div class="panel panel-default">
         <div class="panel-body" data-toggle="tooltip" data-placement="bottom" title="This is your total monthly credit to spend">
           <h4 class="pull-left">Monthly credit:</h4>
-          <h4 class="pull-right text-muted">200$</h4>
+          <h4 class="pull-right text-muted"><%= montly_credit %>$</h4>
         </div>
       </div>
     </div>

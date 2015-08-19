@@ -85,3 +85,10 @@ production:
   database: workful_production
   username: workful
   password: workful
+
+
+staging:
+  <<: *default
+  database: workful_production
+  username: workful
+  password: workful

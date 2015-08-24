@@ -3,14 +3,7 @@
 
 <div class="container" style="padding-top:30px;">
 
-  <ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#">All perks</a></li>
-    <li role="presentation"><a href="#cat1">Category one</a></li>
-    <li role="presentation"><a href="#cat2">Category two</a></li>
-    <li role="presentation"><a href="#cat3">Category three</a></li>
-    <li role="presentation"><a href="#cat4">Category four</a></li>
-    <li role="presentation"><a href="#cat5">Category five</a></li>
-  </ul>
+  <%= render partial: 'shared/categories' %>
 
     <% @available_perks.each_slice(4) do |slice| %>
       <div class="row" style="padding-top:20px;" >

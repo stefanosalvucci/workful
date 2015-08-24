@@ -29,6 +29,7 @@ class PagesController < ApplicationController
 
   def catalogue
     @available_perks = Item.all
+    @categories = ItemCategory.pluck('DISTINCT name')
   end
 
   def landing

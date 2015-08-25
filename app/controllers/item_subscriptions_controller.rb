@@ -7,6 +7,7 @@ class ItemSubscriptionsController < ApplicationController
     @available_perks = Item.all
     @categories = ItemCategory.pluck('DISTINCT name')
     if is.save
+      flash[:success] = "Perk Added!"
       render 'pages/catalogue', change: ['catalogue']
     else
       render 'pages/catalogue', alert: 'Something gone wrong'

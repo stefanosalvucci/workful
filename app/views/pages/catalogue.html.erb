@@ -1,4 +1,13 @@
 <div id="catalogue">
+
+  <!-- not in layout due to turbolinks reloads -->
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
+       <%= value %>
+     </div>
+  <% end %>
+
   <%= render partial: 'shared/info_bar' %>
   <%= render partial: 'shared/headline' %>
 

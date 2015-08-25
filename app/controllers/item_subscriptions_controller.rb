@@ -1,6 +1,18 @@
 class ItemSubscriptionsController < ApplicationController
   layout 'application', only: [:index]
 
+  def create
+    is = ItemSubscription.new(item_subscriptions_params)
+    is.user = current_user
+    @available_perks = Item.all
+    @categories = ItemCategory.pluck('DISTINCT name')
+    if is.save
+      render 'pages/catalogue', change: ['catalogue']
+    else
+      render 'pages/catalogue', alert: 'Something gone wrong'
+    end
+  end
+
   def index
     @active_subscriptions = current_user.item_subscriptions.order(:id)
   end
@@ -40,7 +52,7 @@ class ItemSubscriptionsController < ApplicationController
         redirect_to item_subscriptions_path
       else
         @active_subscriptions = current_user.item_subscriptions.order(:id)
-        render '/item_subscriptions/index', change: ['subscriptions-confirmation']
+        render :index, change: ['subscriptions-confirmation']
       end
     else
       render :edit, alert: 'Something gone wrong'
@@ -51,7 +63,7 @@ class ItemSubscriptionsController < ApplicationController
     @item_subscription = ItemSubscription.find(params[:id])
     if @item_subscription.destroy
       @active_subscriptions = current_user.item_subscriptions.order(:id)
-      render '/item_subscriptions/index', change: ['subscriptions-confirmation']
+      render :index, change: ['subscriptions-confirmation']
     else
       render :index, alert: 'Something gone wrong'
     end
@@ -59,6 +71,6 @@ class ItemSubscriptionsController < ApplicationController
 
   private
   def item_subscriptions_params
-    params.require(:item_subscription).permit(:id, :amount, :service_email)
+    params.require(:item_subscription).permit(:id, :amount, :service_email, :item_id)
   end
 end

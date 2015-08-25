@@ -16,3 +16,4 @@
 //= require bootstrap
 //= require rails.validations
 //= require google_analytics
+//= require catalogue

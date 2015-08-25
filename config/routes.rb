@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :carts, only: [:create, :destroy, :update]
-  resources :item_subscriptions, path: 'subscriptions', only: [:index, :edit, :update, :destroy] do
+  resources :item_subscriptions, path: 'subscriptions', only: [:index, :edit, :update, :destroy, :create] do
     collection do
       get 'create_subscriptions'
       get 'pre_checkout'

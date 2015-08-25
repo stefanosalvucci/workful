@@ -1,0 +1,37 @@
+<div class="modal add-perk-modal" id="perk-<%= perk.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h3 class="modal-title" id="myModalLabel" style="text-align:center;">Add <strong><%= perk.name %></strong> to your perks</h3>
+        <p class="lead text-center">Set your monthly budget:</p>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4"></div>
+          <div class="col-lg-4 col-md-4 col-sm-4" style="margin-top:20px; margin-bottom:20px;">
+            <%= form_tag item_subscriptions_path, remote: true, method: :post, id: perk.id do %>
+              <div class="form-group pull-left">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                <%= hidden_field_tag 'item_subscription[item_id]', perk.id %>
+                <%= select_tag 'item_subscription[amount]', options_for_select([["25$", 25], ["50$", 50], ["75$", 75], ["100$", 100], ["125$", 125], ["150$", 150], ["175$", 175], ["200$", 200]], selected: 100), class: 'form-control' %>
+              </div>
+              <%= submit_tag 'Confirm', class: 'btn btn-success pull-right add-perk-submit', name: nil, 'aria-label' => 'Close' %>
+            <% end %>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="pull-left" style="display:block; width:50%; padding:15px;">
+          <h4 class="pull-left">Credit available:</h4>
+          <h4 class="pull-right"><%= credit_available %>$</h4>
+        </div>
+        <div class="pull-right" style="display:block; width:50%; padding:15px; border-left:#e5e5e5 solid 1px;">
+          <h4 class="pull-left">Credit used:</h4>
+          <h4 class="pull-right"><%= credit_used %>$</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

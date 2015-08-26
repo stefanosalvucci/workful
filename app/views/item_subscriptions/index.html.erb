@@ -1,25 +1,29 @@
-<%= render partial: 'shared/info_bar' %>
-<%= render partial: 'shared/headline' %>
+<div id="subscriptions-confirmation">
+  <%= render partial: 'shared/info_bar' %>
+  <%= render partial: 'shared/headline' %>
 
-<div class="container" style="padding-top:30px;">
-  <div class="row" style="padding-top:20px;" >
-    <% @active_subscriptions.each do |perk| %>
-      <%= render partial: 'shared/my_perks_perk', locals: {perk: perk} %>
-    <% end %>
+  <div class="container" style="padding-top:30px;">
+      <% @active_subscriptions.each_slice(4) do |slice| %>
+        <div class="row" style="padding-top:20px;" >
+          <% slice.each do |perk| %>
+            <%= render partial: 'shared/my_perks_perk', locals: {perk: perk} %>
+          <% end %>
+        </div>
+      <% end %>
 
-    <div class="col-md-3 col-sm-4 col-xs-12">
-      <div class="thumbnail">
-        <%= image_tag image_path('perk-logo.png') %>
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-          <div class="btn-group" role="group">
-            <a href="catalogue.html" class="btn btn-primary" role="button">Add perk</a>
+  <!--     <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="thumbnail">
+          <%= image_tag image_path('perk-logo.png') %>
+          <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+              <a href="catalogue.html" class="btn btn-primary" role="button">Add perk</a>
+            </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
-
 <script>
   $(function () { $('[data-toggle="tooltip"]').tooltip()})
 </script>

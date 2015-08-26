@@ -13,7 +13,7 @@ module ApplicationHelper
     Time.now.end_of_month.day - Time.now.day
   end
 
-  def credit_left
+  def credit_available
     monthly_credit - credit_used
   end
 

@@ -6,20 +6,18 @@
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Go to your profile"><span class="fa fa-share-square-o" aria-hidden="true"></span></button>
       </div>
+
       <div class="btn-group" role="group">
-        <select class="form-control" id="sel1" data-toggle="tooltip" data-placement="top" title="Set your budget">
-          <option>25$</option>
-          <option>50$</option>
-          <option>75$</option>
-          <option>100$</option>
-          <option>125$</option>
-          <option>150$</option>
-          <option>175$</option>
-          <option>200$</option>
-        </select>
+        <%= form_tag item_subscription_path(perk.id), method: :patch, remote: true, id: perk.id do %>
+            <%= hidden_field_tag 'item_subscription[id]', perk.id %>
+            <%= select_tag 'item_subscription[amount]', options_for_select([["25$", 25], ["50$", 50], ["75$", 75], ["100$", 100], ["125$", 125], ["150$", 150], ["175$", 175], ["200$", 200]], selected: perk.amount.to_i), onchange: ("$('##{perk.id}').submit()"), class: 'form-control' %>
+        <% end %>
       </div>
+
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Cancel this perk"><span class="fa fa-times" aria-hidden="true"></span></button>
+        <%= link_to item_subscription_path(perk.id), method: :delete, remote: true, class: 'btn btn-default', data: {toggle: :tooltip, placement: :bottom}, title: "Cancel this perk"  do %>
+          <span class="fa fa-times" aria-hidden="true"></span>
+        <% end %>
       </div>
     </div>
   </div>

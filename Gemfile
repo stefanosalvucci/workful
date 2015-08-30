@@ -79,5 +79,7 @@ group :development, :test do
   gem 'dotenv-rails'
 
   gem 'pry'
+
+  gem 'foreman'
 end
 

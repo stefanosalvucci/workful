@@ -18,3 +18,11 @@
 /public/system
 .env
 dump.rdb
+
+
+# Albo files
+.DS_Store
+Procfile.albo
+app/.DS_Store
+app/assets/.DS_Store
+app/views/.DS_Store
